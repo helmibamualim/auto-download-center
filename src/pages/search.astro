@@ -1,0 +1,213 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SearchBar from '../components/SearchBar.astro';
+import AppCard from '../components/AppCard.astro';
+import { supabase } from '../lib/supabase';
+
+const url = Astro.url;
+const searchQuery = url.searchParams.get('q') || '';
+const page = parseInt(url.searchParams.get('page') || '1');
+const limit = 20;
+const offset = (page - 1) * limit;
+
+let apps: any[] = [];
+let count = 0;
+
+if (searchQuery.trim()) {
+  const { data, count: totalCount } = await supabase
+    .from('apps')
+    .select('*', { count: 'exact' })
+    .eq('is_active', true)
+    .or(`title.ilike.%${searchQuery}%,description.ilike.%${searchQuery}%,developer.ilike.%${searchQuery}%,category.ilike.%${searchQuery}%`)
+    .order('created_at', { ascending: false })
+    .range(offset, offset + limit - 1);
+  
+  apps = data || [];
+  count = totalCount || 0;
+}
+
+const totalPages = Math.ceil(count / limit);
+
+function buildPageUrl(pageNum: number) {
+  const params = new URLSearchParams(url.searchParams);
+  params.set('page', pageNum.toString());
+  return `/search?${params.toString()}`;
+}
+
+const title = searchQuery ? `Search results for "${searchQuery}"` : 'Search Apps & Software';
+const description = searchQuery 
+  ? `Found ${count} results for "${searchQuery}". Search free and open source apps and software.`
+  : 'Search through thousands of free and open source apps and software. Safe downloads from trusted sources.';
+---
+
+<Layout title={title} description={description}>
+  <div class="bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <!-- Header -->
+    <div class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center">
+          <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            {searchQuery ? `Search: "${searchQuery}"` : 'Search Apps & Software'}
+          </h1>
+          <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+            {searchQuery 
+              ? `${count} results found`
+              : 'Find the perfect app or software for your needs'
+            }
+          </p>
+          <SearchBar value={searchQuery} size="lg" />
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {searchQuery ? (
+        apps.length > 0 ? (
+          <>
+            <!-- Results Info -->
+            <div class="flex items-center justify-between mb-8">
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                Showing {offset + 1}-{Math.min(offset + limit, count)} of {count} results
+              </p>
+              {totalPages > 1 && (
+                <div class="text-sm text-gray-600 dark:text-gray-400">
+                  Page {page} of {totalPages}
+                </div>
+              )}
+            </div>
+
+            <!-- Results Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+              {apps.map((app) => (
+                <AppCard app={app} />
+              ))}
+            </div>
+
+            <!-- Pagination -->
+            {totalPages > 1 && (
+              <div class="flex items-center justify-center space-x-2">
+                {page > 1 && (
+                  <a 
+                    href={buildPageUrl(page - 1)}
+                    class="px-4 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
+                  >
+                    Previous
+                  </a>
+                )}
+                
+                {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                  const pageNum = Math.max(1, Math.min(totalPages - 4, page - 2)) + i;
+                  if (pageNum > totalPages) return null;
+                  
+                  return (
+                    <a 
+                      href={buildPageUrl(pageNum)}
+                      class={`px-4 py-2 text-sm font-medium rounded-lg ${
+                        pageNum === page
+                          ? 'bg-blue-600 text-white'
+                          : 'text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
+                      }`}
+                    >
+                      {pageNum}
+                    </a>
+                  );
+                })}
+                
+                {page < totalPages && (
+                  <a 
+                    href={buildPageUrl(page + 1)}
+                    class="px-4 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
+                  >
+                    Next
+                  </a>
+                )}
+              </div>
+            )}
+          </>
+        ) : (
+          <!-- No Results -->
+          <div class="text-center py-12">
+            <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+            <h3 class="mt-2 text-lg font-medium text-gray-900 dark:text-gray-100">
+              No results found for "{searchQuery}"
+            </h3>
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+              Try different keywords or browse our categories below.
+            </p>
+            <div class="mt-6">
+              <a 
+                href="/apps"
+                class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+              >
+                Browse All Apps
+              </a>
+            </div>
+          </div>
+        )
+      ) : (
+        <!-- Search Suggestions -->
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+              Popular Searches
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400">
+              Try searching for these popular categories and apps
+            </p>
+          </div>
+          
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
+            {[
+              'Android apps',
+              'Windows software',
+              'Developer tools',
+              'Productivity',
+              'Security tools',
+              'Design software',
+              'Media players',
+              'Text editors',
+              'Web browsers',
+              'File managers',
+              'Photo editors',
+              'Video editors'
+            ].map((term) => (
+              <a 
+                href={`/search?q=${encodeURIComponent(term)}`}
+                class="bg-white dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors border border-gray-200 dark:border-gray-700 group"
+              >
+                <span class="text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 font-medium">
+                  {term}
+                </span>
+              </a>
+            ))}
+          </div>
+          
+          <div class="text-center">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+              Browse by Category
+            </h3>
+            <div class="flex flex-wrap justify-center gap-3">
+              {[
+                { name: 'Android Apps', slug: 'android-apps' },
+                { name: 'Windows Software', slug: 'windows-software' },
+                { name: 'Mac Software', slug: 'mac-software' },
+                { name: 'Developer Tools', slug: 'developer-tools' },
+                { name: 'Productivity', slug: 'productivity' },
+                { name: 'Security', slug: 'security' }
+              ].map((category) => (
+                <a 
+                  href={`/category/${category.slug}`}
+                  class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
+                >
+                  {category.name}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</Layout>

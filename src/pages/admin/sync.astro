@@ -1,0 +1,184 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Sync Dashboard - Auto Download Center">
+  <div class="min-h-screen bg-gray-50 dark:bg-gray-900 py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-8">
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+          🔄 Sync Dashboard
+        </h1>
+        
+        <div class="mb-8">
+          <p class="text-gray-600 dark:text-gray-400 mb-4">
+            Trigger data synchronization from GitHub, F-Droid, and SourceForge.
+          </p>
+          
+          <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-6">
+            <h3 class="text-sm font-semibold text-blue-900 dark:text-blue-200 mb-2">
+              ℹ️ Information
+            </h3>
+            <ul class="text-sm text-blue-800 dark:text-blue-300 space-y-1">
+              <li>• Automatic sync runs daily at midnight UTC</li>
+              <li>• Manual sync can be triggered anytime using the button below</li>
+              <li>• Process may take 5-10 minutes to complete</li>
+              <li>• SafelinkU shortlinks are created automatically</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <button
+            id="syncButton"
+            class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center space-x-3"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+            <span>Start Sync Now</span>
+          </button>
+
+          <div id="status" class="hidden">
+            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+              <div class="flex items-center space-x-3 mb-3">
+                <div class="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
+                <span class="text-gray-700 dark:text-gray-300 font-medium">Syncing data...</span>
+              </div>
+              <div id="progress" class="text-sm text-gray-600 dark:text-gray-400 space-y-1"></div>
+            </div>
+          </div>
+
+          <div id="result" class="hidden"></div>
+        </div>
+
+        <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+            📊 Sync Status
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+              <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">GitHub</div>
+              <div class="text-2xl font-bold text-gray-900 dark:text-gray-100" id="githubCount">-</div>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+              <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">F-Droid</div>
+              <div class="text-2xl font-bold text-gray-900 dark:text-gray-100" id="fdroidCount">-</div>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+              <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">SourceForge</div>
+              <div class="text-2xl font-bold text-gray-900 dark:text-gray-100" id="sourceforgeCount">-</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <a 
+            href="/apps"
+            class="text-blue-600 dark:text-blue-400 hover:underline text-sm"
+          >
+            ← Back to Apps
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const syncButton = document.getElementById('syncButton');
+  const statusDiv = document.getElementById('status');
+  const resultDiv = document.getElementById('result');
+  const progressDiv = document.getElementById('progress');
+
+  syncButton?.addEventListener('click', async () => {
+    // Disable button
+    syncButton.disabled = true;
+    syncButton.classList.add('opacity-50', 'cursor-not-allowed');
+    
+    // Show status
+    statusDiv?.classList.remove('hidden');
+    resultDiv?.classList.add('hidden');
+    
+    if (progressDiv) {
+      progressDiv.innerHTML = '<p>⏳ Initializing sync...</p>';
+    }
+
+    try {
+      const response = await fetch('/api/sync-now');
+      const data = await response.json();
+
+      // Hide status
+      statusDiv?.classList.add('hidden');
+
+      // Show result
+      if (resultDiv) {
+        resultDiv.classList.remove('hidden');
+        
+        if (data.success) {
+          resultDiv.innerHTML = `
+            <div class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+              <div class="flex items-center space-x-2 mb-2">
+                <svg class="w-5 h-5 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="font-semibold text-green-900 dark:text-green-200">Sync Completed Successfully!</span>
+              </div>
+              <p class="text-sm text-green-800 dark:text-green-300">
+                ${data.message}
+              </p>
+              <div class="mt-3 space-y-1 text-sm">
+                <p class="text-green-700 dark:text-green-400">✓ GitHub: ${data.results.github.status}</p>
+                <p class="text-green-700 dark:text-green-400">✓ F-Droid: ${data.results.fdroid.status}</p>
+                <p class="text-green-700 dark:text-green-400">✓ SourceForge: ${data.results.sourceforge.status}</p>
+              </div>
+            </div>
+          `;
+        } else {
+          resultDiv.innerHTML = `
+            <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">
+              <div class="flex items-center space-x-2 mb-2">
+                <svg class="w-5 h-5 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-1.964-1.333-2.732 0L3.732 16c-.77 1.333.192 3 1.732 3z"></path>
+                </svg>
+                <span class="font-semibold text-yellow-900 dark:text-yellow-200">Sync Completed with Warnings</span>
+              </div>
+              <p class="text-sm text-yellow-800 dark:text-yellow-300">
+                ${data.message}
+              </p>
+            </div>
+          `;
+        }
+      }
+
+      // Reload page after 3 seconds to show updated counts
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
+
+    } catch (error) {
+      statusDiv?.classList.add('hidden');
+      
+      if (resultDiv) {
+        resultDiv.classList.remove('hidden');
+        resultDiv.innerHTML = `
+          <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+            <div class="flex items-center space-x-2 mb-2">
+              <svg class="w-5 h-5 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+              <span class="font-semibold text-red-900 dark:text-red-200">Sync Failed</span>
+            </div>
+            <p class="text-sm text-red-800 dark:text-red-300">
+              ${error instanceof Error ? error.message : 'Unknown error occurred'}
+            </p>
+          </div>
+        `;
+      }
+    } finally {
+      // Re-enable button
+      syncButton.disabled = false;
+      syncButton.classList.remove('opacity-50', 'cursor-not-allowed');
+    }
+  });
+</script>

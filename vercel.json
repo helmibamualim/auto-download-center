@@ -1,0 +1,19 @@
+{
+  "crons": [
+    {
+      "path": "/api/sync",
+      "schedule": "0 2 * * *"
+    },
+    {
+      "path": "/api/validate",
+      "schedule": "0 3 * * 0"
+    },
+    {
+      "path": "/api/cleanup",
+      "schedule": "0 4 1 * *"
+    }
+  ],
+  "env": {
+    "NODE_VERSION": "22.12.0"
+  }
+}

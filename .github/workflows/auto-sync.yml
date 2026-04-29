@@ -1,0 +1,48 @@
+name: Auto Sync & Deploy
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  sync-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run sync
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          echo "🚀 Starting sync..."
+          node scripts/sync-apps.mjs full || echo "⚠️ Sync completed with warnings"
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+
+      - name: Notify completion
+        run: |
+          echo "✅ Sync and deploy completed successfully!"
+          echo "🌐 Website: https://auto-download-center.vercel.app"

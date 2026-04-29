@@ -1,0 +1,377 @@
+---
+import { marked } from 'marked';
+
+interface Props {
+  content: string;
+  maxLength?: number;
+  showToggle?: boolean;
+}
+
+const { content, maxLength = 1000, showToggle = true } = Astro.props;
+
+// Configure marked options
+marked.setOptions({
+  breaks: true, // Convert \n to <br>
+  gfm: true, // GitHub Flavored Markdown
+});
+
+// Parse markdown to HTML
+let htmlContent = '';
+try {
+  htmlContent = marked.parse(content || '');
+} catch (error) {
+  console.error('Markdown parsing error:', error);
+  // Fallback: basic text formatting
+  htmlContent = content
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/\n/g, '<br>')
+    .replace(/^(.+)$/, '<p>$1</p>');
+}
+
+// Check if content is long
+const isLongContent = content.length > maxLength;
+const uniqueId = `content-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div class="markdown-content" data-content-id={uniqueId}>
+  <div 
+    class={`prose-content ${isLongContent && showToggle ? 'collapsed' : ''}`}
+    set:html={htmlContent}
+  />
+  
+  {isLongContent && showToggle && (
+    <button 
+      class="show-more-btn mt-4 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium text-sm flex items-center transition-colors"
+      data-target={uniqueId}
+    >
+      <span class="show-more-text">Show More</span>
+      <svg class="w-4 h-4 ml-1 transform transition-transform show-more-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+      </svg>
+    </button>
+  )}
+</div>
+
+<style>
+  /* Markdown Content Styling */
+  .markdown-content {
+    color: rgb(55, 65, 81);
+  }
+  
+  :global(.dark) .markdown-content {
+    color: rgb(209, 213, 219);
+  }
+
+  /* Prose Content */
+  .prose-content {
+    line-height: 1.75;
+    max-width: none;
+  }
+
+  /* Collapsed State */
+  .prose-content.collapsed {
+    max-height: 400px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .prose-content.collapsed::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, rgb(255, 255, 255));
+  }
+
+  :global(.dark) .prose-content.collapsed::after {
+    background: linear-gradient(to bottom, transparent, rgb(31, 41, 55));
+  }
+
+  /* Headings */
+  .prose-content :global(h1) {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: rgb(17, 24, 39);
+  }
+
+  :global(.dark) .prose-content :global(h1) {
+    color: rgb(243, 244, 246);
+  }
+
+  .prose-content :global(h2) {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 1.75rem;
+    margin-bottom: 0.875rem;
+    color: rgb(17, 24, 39);
+  }
+
+  :global(.dark) .prose-content :global(h2) {
+    color: rgb(243, 244, 246);
+  }
+
+  .prose-content :global(h3) {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: rgb(31, 41, 55);
+  }
+
+  :global(.dark) .prose-content :global(h3) {
+    color: rgb(229, 231, 235);
+  }
+
+  .prose-content :global(h4) {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-top: 1.25rem;
+    margin-bottom: 0.625rem;
+    color: rgb(31, 41, 55);
+  }
+
+  :global(.dark) .prose-content :global(h4) {
+    color: rgb(229, 231, 235);
+  }
+
+  /* Paragraphs */
+  .prose-content :global(p) {
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+    line-height: 1.75;
+  }
+
+  .prose-content :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  /* Lists */
+  .prose-content :global(ul),
+  .prose-content :global(ol) {
+    margin-top: 1rem;
+    margin-bottom: 1.25rem;
+    padding-left: 1.625rem;
+  }
+
+  .prose-content :global(ul) {
+    list-style-type: disc;
+  }
+
+  .prose-content :global(ol) {
+    list-style-type: decimal;
+  }
+
+  .prose-content :global(li) {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.75;
+  }
+
+  .prose-content :global(li > p) {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .prose-content :global(ul ul),
+  .prose-content :global(ul ol),
+  .prose-content :global(ol ul),
+  .prose-content :global(ol ol) {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .prose-content :global(ul > li) {
+    padding-left: 0.375rem;
+  }
+
+  .prose-content :global(ol > li) {
+    padding-left: 0.375rem;
+  }
+
+  /* Links */
+  .prose-content :global(a) {
+    color: rgb(37, 99, 235);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  :global(.dark) .prose-content :global(a) {
+    color: rgb(96, 165, 250);
+  }
+
+  .prose-content :global(a:hover) {
+    color: rgb(29, 78, 216);
+    text-decoration: underline;
+  }
+
+  :global(.dark) .prose-content :global(a:hover) {
+    color: rgb(147, 197, 253);
+  }
+
+  /* Code */
+  .prose-content :global(code) {
+    background-color: rgb(243, 244, 246);
+    color: rgb(220, 38, 38);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  :global(.dark) .prose-content :global(code) {
+    background-color: rgb(55, 65, 81);
+    color: rgb(252, 165, 165);
+  }
+
+  .prose-content :global(pre) {
+    background-color: rgb(31, 41, 55);
+    color: rgb(229, 231, 235);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .prose-content :global(pre code) {
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+    font-size: 0.875rem;
+  }
+
+  /* Blockquotes */
+  .prose-content :global(blockquote) {
+    border-left: 4px solid rgb(209, 213, 219);
+    padding-left: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    font-style: italic;
+    color: rgb(107, 114, 128);
+  }
+
+  :global(.dark) .prose-content :global(blockquote) {
+    border-left-color: rgb(75, 85, 99);
+    color: rgb(156, 163, 175);
+  }
+
+  /* Horizontal Rule */
+  .prose-content :global(hr) {
+    border: 0;
+    border-top: 1px solid rgb(229, 231, 235);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  :global(.dark) .prose-content :global(hr) {
+    border-top-color: rgb(55, 65, 81);
+  }
+
+  /* Tables */
+  .prose-content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .prose-content :global(th) {
+    background-color: rgb(243, 244, 246);
+    padding: 0.75rem;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid rgb(229, 231, 235);
+  }
+
+  :global(.dark) .prose-content :global(th) {
+    background-color: rgb(55, 65, 81);
+    border-color: rgb(75, 85, 99);
+  }
+
+  .prose-content :global(td) {
+    padding: 0.75rem;
+    border: 1px solid rgb(229, 231, 235);
+  }
+
+  :global(.dark) .prose-content :global(td) {
+    border-color: rgb(75, 85, 99);
+  }
+
+  /* Images */
+  .prose-content :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Strong and Emphasis */
+  .prose-content :global(strong) {
+    font-weight: 600;
+    color: rgb(17, 24, 39);
+  }
+
+  :global(.dark) .prose-content :global(strong) {
+    color: rgb(243, 244, 246);
+  }
+
+  .prose-content :global(em) {
+    font-style: italic;
+  }
+
+  /* Show More Button */
+  .show-more-btn {
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .show-more-btn:focus {
+    outline: 2px solid rgb(59, 130, 246);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+</style>
+
+<script>
+  // Show More / Show Less functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.show-more-btn');
+    
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+        const container = document.querySelector(`[data-content-id="${targetId}"]`);
+        const content = container?.querySelector('.prose-content');
+        const textSpan = button.querySelector('.show-more-text');
+        const icon = button.querySelector('.show-more-icon');
+        
+        if (content && textSpan && icon) {
+          const isCollapsed = content.classList.contains('collapsed');
+          
+          if (isCollapsed) {
+            content.classList.remove('collapsed');
+            textSpan.textContent = 'Show Less';
+            icon.style.transform = 'rotate(180deg)';
+          } else {
+            content.classList.add('collapsed');
+            textSpan.textContent = 'Show More';
+            icon.style.transform = 'rotate(0deg)';
+            
+            // Scroll to top of content
+            container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        }
+      });
+    });
+  });
+</script>

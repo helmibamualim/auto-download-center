@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Privacy Policy - Auto Download Monetized Center"
+  description="Learn how we protect your privacy and handle your data at Auto Download Monetized Center."
+>
+  <div class="bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-8">
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">
+          Privacy Policy
+        </h1>
+        
+        <div class="prose dark:prose-invert max-w-none">
+          <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+            Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </p>
+
+          <h2>Information We Collect</h2>
+          <p>
+            Auto Download Monetized Center is committed to protecting your privacy. We collect minimal information necessary to provide our services:
+          </p>
+          <ul>
+            <li><strong>Usage Data:</strong> We collect anonymous usage statistics to improve our service</li>
+            <li><strong>Download Analytics:</strong> We track download counts for statistical purposes</li>
+            <li><strong>Technical Data:</strong> Basic technical information like IP address, browser type, and device information</li>
+          </ul>
+
+          <h2>How We Use Your Information</h2>
+          <p>We use the collected information to:</p>
+          <ul>
+            <li>Provide and maintain our download service</li>
+            <li>Improve user experience and website functionality</li>
+            <li>Generate anonymous usage statistics</li>
+            <li>Ensure security and prevent abuse</li>
+          </ul>
+
+          <h2>Third-Party Services</h2>
+          <p>
+            Our website uses third-party services that may collect information:
+          </p>
+          <ul>
+            <li><strong>SafelinkU:</strong> For monetized download links (subject to their privacy policy)</li>
+            <li><strong>Vercel:</strong> For website hosting and analytics</li>
+            <li><strong>Supabase:</strong> For database services</li>
+          </ul>
+
+          <h2>Data Storage and Security</h2>
+          <p>
+            We implement appropriate security measures to protect your information:
+          </p>
+          <ul>
+            <li>Data is stored securely using industry-standard encryption</li>
+            <li>We do not store personal information unless necessary</li>
+            <li>Regular security audits and updates</li>
+          </ul>
+
+          <h2>Cookies and Tracking</h2>
+          <p>
+            We use minimal cookies for:
+          </p>
+          <ul>
+            <li>Theme preferences (dark/light mode)</li>
+            <li>Basic analytics (anonymous)</li>
+            <li>Security and fraud prevention</li>
+          </ul>
+
+          <h2>Your Rights</h2>
+          <p>You have the right to:</p>
+          <ul>
+            <li>Access information we have about you</li>
+            <li>Request correction of inaccurate data</li>
+            <li>Request deletion of your data</li>
+            <li>Opt-out of data collection where possible</li>
+          </ul>
+
+          <h2>Children's Privacy</h2>
+          <p>
+            Our service is not directed to children under 13. We do not knowingly collect personal information from children under 13.
+          </p>
+
+          <h2>Changes to This Policy</h2>
+          <p>
+            We may update this privacy policy from time to time. We will notify users of any material changes by posting the new policy on this page.
+          </p>
+
+          <h2>Contact Us</h2>
+          <p>
+            If you have any questions about this Privacy Policy, please contact us at:
+          </p>
+          <ul>
+            <li>Email: <a href="mailto:privacy@autodownloadcenter.com" class="text-blue-600 dark:text-blue-400">privacy@autodownloadcenter.com</a></li>
+            <li>Contact Form: <a href="/contact" class="text-blue-600 dark:text-blue-400">Contact Page</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
