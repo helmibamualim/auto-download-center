@@ -20,7 +20,7 @@ const fullTitle = title.includes('Auto Download') ? title : `${title} | Auto Dow
 const canonicalURL = canonical || new URL(Astro.url.pathname, siteUrl).toString();
 const ogImage = image || `${siteUrl}/og-default.png`;
 
-// Structured data for website
+// Basic structured data for website
 const websiteStructuredData = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -101,53 +101,14 @@ const organizationStructuredData = {
     <!-- Google Site Verification -->
     <meta name="google-site-verification" content="Ly2b_FX0Z9bmpSdULFu0gVv8wtAPir8pdoROw-8OFGE" />
     
-    <!-- Enhanced SEO Meta Tags -->
+    <!-- Basic SEO Meta Tags -->
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     {!noindex && <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />}
     <link rel="canonical" href={canonicalURL} />
     
-    <!-- Additional SEO Meta Tags -->
-    <meta name="author" content="Auto Download Center" />
-    <meta name="publisher" content="Auto Download Center" />
-    <meta name="copyright" content="© 2026 Auto Download Center" />
-    <meta name="language" content="en" />
-    <meta name="revisit-after" content="1 days" />
-    <meta name="distribution" content="global" />
-    <meta name="rating" content="general" />
-    <meta name="referrer" content="origin-when-cross-origin" />
-    
-    <!-- Enhanced Keywords -->
-    <meta name="keywords" content="free download, open source, safe download, software download, apps download, {title.toLowerCase()}, latest version, official download, secure software" />
-    
-    <!-- Geo Tags for Global Reach -->
-    <meta name="geo.region" content="US" />
-    <meta name="geo.placename" content="Global" />
-    <meta name="ICBM" content="40.7128, -74.0060" />
-    
-    <!-- App-specific Meta Tags -->
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Auto Download Center" />
-    <meta name="application-name" content="Auto Download Center" />
-    <meta name="msapplication-TileColor" content="#1f2937" />
-    <meta name="theme-color" content="#1f2937" />
-    
-    <!-- Preconnect for Performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://api.github.com" />
-    <link rel="preconnect" href="https://f-droid.org" />
-    
-    <!-- DNS Prefetch for External Resources -->
-    <link rel="dns-prefetch" href="//github.com" />
-    <link rel="dns-prefetch" href="//raw.githubusercontent.com" />
-    <link rel="dns-prefetch" href="//f-droid.org" />
-    <link rel="dns-prefetch" href="//sourceforge.net" />
-    
-    <!-- Enhanced Open Graph / Facebook -->
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
@@ -156,101 +117,30 @@ const organizationStructuredData = {
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content={`${title} - Auto Download Center`} />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:updated_time" content={new Date().toISOString()} />
-    <meta property="article:publisher" content="Auto Download Center" />
-    <meta property="article:author" content="Auto Download Center" />
     
-    <!-- Enhanced Twitter Card -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@AutoDownloadCenter" />
-    <meta name="twitter:creator" content="@AutoDownloadCenter" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:image:alt" content={`${title} - Auto Download Center`} />
-    <meta name="twitter:domain" content={new URL(siteUrl).hostname} />
     
-    <!-- LinkedIn Specific -->
-    <meta property="og:image:type" content="image/png" />
-    <meta name="linkedin:owner" content="Auto Download Center" />
+    <!-- Additional SEO -->
+    <meta name="author" content="Auto Download Center" />
+    <meta name="keywords" content="free download, open source, safe download, software download, apps download, {title.toLowerCase()}" />
     
-    <!-- WhatsApp Specific -->
-    <meta property="og:image:secure_url" content={ogImage} />
-    
-    <!-- Telegram Specific -->
-    <meta name="telegram:channel" content="@autodownloadcenter" />
-    
-    <!-- Enhanced Favicon Package -->
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png" />
-    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#1f2937" />
-    <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
-    <meta name="msapplication-config" content="/browserconfig.xml" />
     
-    <!-- Enhanced Structured Data -->
+    <!-- Basic Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(websiteStructuredData)} />
     <script type="application/ld+json" set:html={JSON.stringify(organizationStructuredData)} />
     
-    <!-- Additional Schema for Better SEO -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Auto Download Center",
-      "description": "Safe, Free & Open Source Downloads Platform",
-      "url": siteUrl,
-      "applicationCategory": "UtilitiesApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": "Auto Download Center"
-      }
-    })} />
-    
-    <!-- Fonts with Performance Optimization -->
-    <!-- Fonts with Performance Optimization -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    
-    <!-- Critical CSS Inline for Performance -->
-    <style>
-      /* Critical above-the-fold styles */
-      .hero-section { min-height: 60vh; }
-      .app-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
-      .loading-skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: loading 1.5s infinite; }
-      @keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-    </style>
-    
-    <!-- Performance Hints -->
-    <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="prefetch" href="/api/status" />
-    
-    <!-- Security Headers -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta http-equiv="X-Frame-Options" content="DENY" />
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
-    
-    <!-- PWA Support -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="format-detection" content="telephone=no" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans">
     <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
