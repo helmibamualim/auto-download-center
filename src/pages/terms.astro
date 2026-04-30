@@ -1,122 +1,1539 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// SEO Configuration
+const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://auto-download-center.vercel.app';
+const pageTitle = "Terms of Service - Auto Download Center | User Agreement & Legal Terms";
+const pageDescription = "Comprehensive terms of service for Auto Download Center. Understand your rights, responsibilities, and legal agreements when using our free software download platform.";
+const lastUpdated = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+// Terms of Service Structured Data
+const termsStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Terms of Service",
+  "description": pageDescription,
+  "url": `${siteUrl}/terms`,
+  "dateModified": new Date().toISOString(),
+  "publisher": {
+    "@type": "Organization",
+    "name": "Auto Download Center",
+    "url": siteUrl
+  },
+  "mainEntity": {
+    "@type": "TermsOfService",
+    "name": "Auto Download Center Terms of Service",
+    "datePublished": "2026-01-01",
+    "dateModified": new Date().toISOString(),
+    "publisher": {
+      "@type": "Organization", 
+      "name": "Auto Download Center"
+    }
+  }
+};
 ---
 
 <Layout 
-  title="Terms of Service - Auto Download Monetized Center"
-  description="Read our terms of service and understand the rules for using Auto Download Monetized Center."
+  title={pageTitle}
+  description={pageDescription}
+  canonical={`${siteUrl}/terms`}
 >
-  <div class="bg-gray-50 dark:bg-gray-900 min-h-screen">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-8">
-        <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">
+  <!-- Terms of Service Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(termsStructuredData)} slot="head" />
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-indigo-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 py-20 overflow-hidden">
+    <!-- Animated Background -->
+    <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
+    <div class="absolute top-0 right-1/4 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-4xl mx-auto">
+        <!-- Badge -->
+        <div class="inline-flex items-center px-4 py-2 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-medium mb-6 backdrop-blur-sm">
+          <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 2L3 7v11a1 1 0 001 1h3v-8h6v8h3a1 1 0 001-1V7l-7-5z" clip-rule="evenodd"></path>
+          </svg>
+          Legal Agreement & User Terms
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-100 mb-6 leading-tight">
           Terms of Service
         </h1>
         
-        <div class="prose dark:prose-invert max-w-none">
-          <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
-            Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-          </p>
+        <!-- Subtitle -->
+        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Your rights, responsibilities, and legal agreements when using our platform.
+        </p>
 
-          <h2>Acceptance of Terms</h2>
-          <p>
-            By accessing and using Auto Download Monetized Center, you accept and agree to be bound by the terms and provision of this agreement.
-          </p>
-
-          <h2>Description of Service</h2>
-          <p>
-            Auto Download Monetized Center is a platform that indexes and provides links to free, open-source software and applications from official sources. We do not host any files directly but provide links to original publishers and developers.
-          </p>
-
-          <h2>Legal Software Only</h2>
-          <p>
-            We strictly prohibit and do not index:
-          </p>
-          <ul>
-            <li>Cracked, pirated, or illegally modified software</li>
-            <li>Keygens, patches, or license circumvention tools</li>
-            <li>Malware, viruses, or potentially harmful software</li>
-            <li>Copyrighted software without proper licensing</li>
-          </ul>
-
-          <h2>User Responsibilities</h2>
-          <p>Users agree to:</p>
-          <ul>
-            <li>Use the service only for lawful purposes</li>
-            <li>Respect intellectual property rights</li>
-            <li>Not attempt to circumvent security measures</li>
-            <li>Not use automated tools to scrape or abuse the service</li>
-            <li>Verify software licenses before use</li>
-          </ul>
-
-          <h2>Download Links and Monetization</h2>
-          <p>
-            Download links may be processed through SafelinkU for monetization purposes. By clicking download links, you acknowledge:
-          </p>
-          <ul>
-            <li>Links may redirect through advertising services</li>
-            <li>We may earn revenue from downloads</li>
-            <li>Original download sources remain unchanged</li>
-            <li>All software remains free and legal</li>
-          </ul>
-
-          <h2>Disclaimer of Warranties</h2>
-          <p>
-            The service is provided "as is" without any warranties:
-          </p>
-          <ul>
-            <li>We do not guarantee software functionality or safety</li>
-            <li>Download links may become unavailable</li>
-            <li>Software versions may not be the latest</li>
-            <li>We are not responsible for third-party content</li>
-          </ul>
-
-          <h2>Limitation of Liability</h2>
-          <p>
-            Auto Download Monetized Center shall not be liable for:
-          </p>
-          <ul>
-            <li>Any damages resulting from software use</li>
-            <li>Data loss or system damage</li>
-            <li>Unavailable or broken download links</li>
-            <li>Third-party service interruptions</li>
-          </ul>
-
-          <h2>Intellectual Property</h2>
-          <p>
-            All software listed remains the property of their respective owners. We respect intellectual property rights and will remove content upon valid DMCA requests.
-          </p>
-
-          <h2>Privacy</h2>
-          <p>
-            Your privacy is important to us. Please review our <a href="/privacy-policy" class="text-blue-600 dark:text-blue-400">Privacy Policy</a> to understand how we collect and use information.
-          </p>
-
-          <h2>Modifications to Terms</h2>
-          <p>
-            We reserve the right to modify these terms at any time. Continued use of the service constitutes acceptance of modified terms.
-          </p>
-
-          <h2>Termination</h2>
-          <p>
-            We may terminate or suspend access to our service immediately, without prior notice, for conduct that we believe violates these terms.
-          </p>
-
-          <h2>Governing Law</h2>
-          <p>
-            These terms shall be governed by and construed in accordance with applicable laws, without regard to conflict of law provisions.
-          </p>
-
-          <h2>Contact Information</h2>
-          <p>
-            If you have any questions about these Terms of Service, please contact us:
-          </p>
-          <ul>
-            <li>Email: <a href="mailto:legal@autodownloadcenter.com" class="text-blue-600 dark:text-blue-400">legal@autodownloadcenter.com</a></li>
-            <li>Contact Form: <a href="/contact" class="text-blue-600 dark:text-blue-400">Contact Page</a></li>
-          </ul>
+        <!-- Last Updated -->
+        <div class="inline-flex items-center px-6 py-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-700/50">
+          <svg class="w-5 h-5 text-gray-500 dark:text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+          </svg>
+          <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Last updated: {lastUpdated}</span>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Table of Contents -->
+  <section class="py-12 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-3xl p-8 shadow-lg border border-gray-200 dark:border-gray-600">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 flex items-center">
+          <svg class="w-6 h-6 mr-3 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+          </svg>
+          Table of Contents
+        </h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="space-y-2">
+            <a href="#acceptance" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-indigo-600 dark:text-indigo-400 font-medium group-hover:text-indigo-700 dark:group-hover:text-indigo-300">1. Acceptance of Terms</span>
+            </a>
+            <a href="#definitions" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-indigo-600 dark:text-indigo-400 font-medium group-hover:text-indigo-700 dark:group-hover:text-indigo-300">2. Definitions</span>
+            </a>
+            <a href="#service-description" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-indigo-600 dark:text-indigo-400 font-medium group-hover:text-indigo-700 dark:group-hover:text-indigo-300">3. Service Description</span>
+            </a>
+            <a href="#user-rights" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-indigo-600 dark:text-indigo-400 font-medium group-hover:text-indigo-700 dark:group-hover:text-indigo-300">4. User Rights & Responsibilities</span>
+            </a>
+            <a href="#prohibited-use" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-indigo-600 dark:text-indigo-400 font-medium group-hover:text-indigo-700 dark:group-hover:text-indigo-300">5. Prohibited Use</span>
+            </a>
+            <a href="#content-licensing" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-indigo-600 dark:text-indigo-400 font-medium group-hover:text-indigo-700 dark:group-hover:text-indigo-300">6. Content & Licensing</span>
+            </a>
+          </div>
+          <div class="space-y-2">
+            <a href="#third-party" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-indigo-600 dark:text-indigo-400 font-medium group-hover:text-indigo-700 dark:group-hover:text-indigo-300">7. Third-Party Links & Services</span>
+            </a>
+            <a href="#disclaimers" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-indigo-600 dark:text-indigo-400 font-medium group-hover:text-indigo-700 dark:group-hover:text-indigo-300">8. Disclaimers & Warranties</span>
+            </a>
+            <a href="#liability" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-indigo-600 dark:text-indigo-400 font-medium group-hover:text-indigo-700 dark:group-hover:text-indigo-300">9. Limitation of Liability</span>
+            </a>
+            <a href="#termination" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-indigo-600 dark:text-indigo-400 font-medium group-hover:text-indigo-700 dark:group-hover:text-indigo-300">10. Termination & Violations</span>
+            </a>
+            <a href="#updates" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-indigo-600 dark:text-indigo-400 font-medium group-hover:text-indigo-700 dark:group-hover:text-indigo-300">11. Terms Updates</span>
+            </a>
+            <a href="#contact" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-indigo-600 dark:text-indigo-400 font-medium group-hover:text-indigo-700 dark:group-hover:text-indigo-300">12. Contact & Legal</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="py-20 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- 1. Acceptance of Terms -->
+      <div id="acceptance" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">1</span>
+          </div>
+          <div>
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Acceptance of Terms</h2>
+            <div class="prose dark:prose-invert max-w-none">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                By accessing, browsing, or using Auto Download Center (the "Service"), you acknowledge that you have read, 
+                understood, and agree to be bound by these Terms of Service and all applicable laws and regulations.
+              </p>
+              
+              <!-- Agreement Conditions -->
+              <div class="bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 mb-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-6 h-6 mr-2 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  By Using Our Service, You Agree To:
+                </h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div class="flex items-start">
+                    <div class="w-2 h-2 bg-indigo-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">Legal Compliance:</strong>
+                      <span class="text-gray-600 dark:text-gray-400"> Follow all applicable laws and regulations</span>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">Terms Binding:</strong>
+                      <span class="text-gray-600 dark:text-gray-400"> Accept these terms as legally binding</span>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">Age Requirement:</strong>
+                      <span class="text-gray-600 dark:text-gray-400"> Be at least 13 years old or have parental consent</span>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <div class="w-2 h-2 bg-pink-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">Updates Acceptance:</strong>
+                      <span class="text-gray-600 dark:text-gray-400"> Accept future updates to these terms</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                If you do not agree to these terms, please do not use our Service. Your continued use of the Service 
+                constitutes acceptance of any modifications to these terms.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Definitions -->
+      <div id="definitions" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">2</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Definitions</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                For the purposes of these Terms of Service, the following definitions apply:
+              </p>
+
+              <div class="grid gap-6">
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H3m2 0h4M9 7h6m-6 4h6m-6 4h6"></path>
+                    </svg>
+                    Key Terms & Definitions
+                  </h3>
+                  <div class="space-y-4">
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">"Service" or "Platform":</strong>
+                      <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                        Refers to Auto Download Center website, including all pages, features, and functionality
+                      </p>
+                    </div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">"User" or "You":</strong>
+                      <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                        Any individual or entity that accesses or uses our Service
+                      </p>
+                    </div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">"Content":</strong>
+                      <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                        All software listings, descriptions, links, and information provided on our platform
+                      </p>
+                    </div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">"Third-Party Software":</strong>
+                      <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                        Software applications developed and owned by external developers and publishers
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Service Description -->
+      <div id="service-description" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">3</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Service Description</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                Auto Download Center is a software discovery and indexing platform that provides users with access to 
+                free, legal, and open-source software applications.
+              </p>
+
+              <!-- What We Provide -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  What We Provide
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Software Discovery</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Curated software listings</li>
+                      <li>• Detailed app descriptions</li>
+                      <li>• Category-based organization</li>
+                      <li>• Search and filtering tools</li>
+                      <li>• User ratings and reviews</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Download Links</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Direct links to official sources</li>
+                      <li>• Multiple download options</li>
+                      <li>• Version information</li>
+                      <li>• Platform compatibility</li>
+                      <li>• Safety verification</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- What We Don't Do -->
+              <div class="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-red-200 dark:border-red-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                  </svg>
+                  Important: What We Don't Do
+                </h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>✗ Host software files directly</li>
+                    <li>✗ Modify or alter software</li>
+                    <li>✗ Provide technical support for software</li>
+                    <li>✗ Guarantee software functionality</li>
+                  </ul>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>✗ Index illegal or pirated software</li>
+                    <li>✗ Distribute copyrighted content</li>
+                    <li>✗ Provide software licenses</li>
+                    <li>✗ Warranty software performance</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 11. Terms Updates -->
+      <div id="updates" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">11</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Terms Updates</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                How we handle updates to these Terms of Service and notify users of changes.
+              </p>
+
+              <!-- Update Process -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-cyan-600 dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                  </svg>
+                  Update Process & Timeline
+                </h3>
+                <div class="space-y-4">
+                  <p class="text-gray-600 dark:text-gray-400">
+                    We may update these Terms of Service from time to time to reflect changes in our practices, 
+                    legal requirements, or service improvements.
+                  </p>
+                  <div class="grid md:grid-cols-3 gap-4">
+                    <div class="text-center p-4 bg-cyan-50 dark:bg-cyan-900/20 rounded-xl border border-cyan-200 dark:border-cyan-700">
+                      <div class="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <span class="text-white font-bold text-sm">1</span>
+                      </div>
+                      <h4 class="font-semibold text-gray-900 dark:text-gray-100 text-sm mb-1">Review</h4>
+                      <p class="text-gray-600 dark:text-gray-400 text-xs">Internal review and legal validation</p>
+                    </div>
+                    <div class="text-center p-4 bg-cyan-50 dark:bg-cyan-900/20 rounded-xl border border-cyan-200 dark:border-cyan-700">
+                      <div class="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <span class="text-white font-bold text-sm">2</span>
+                      </div>
+                      <h4 class="font-semibold text-gray-900 dark:text-gray-100 text-sm mb-1">Publish</h4>
+                      <p class="text-gray-600 dark:text-gray-400 text-xs">Update website with new terms</p>
+                    </div>
+                    <div class="text-center p-4 bg-cyan-50 dark:bg-cyan-900/20 rounded-xl border border-cyan-200 dark:border-cyan-700">
+                      <div class="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <span class="text-white font-bold text-sm">3</span>
+                      </div>
+                      <h4 class="font-semibold text-gray-900 dark:text-gray-100 text-sm mb-1">Notify</h4>
+                      <p class="text-gray-600 dark:text-gray-400 text-xs">Inform users of significant changes</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Notification Methods -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zM4 19h6v-2H4v2zM4 15h8v-2H4v2zM4 11h10V9H4v2z"></path>
+                  </svg>
+                  How We Notify You
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">For All Changes</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Updated "Last updated" date on this page</li>
+                      <li>• Version history maintained</li>
+                      <li>• Changes highlighted in document</li>
+                      <li>• Summary of modifications provided</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">For Material Changes</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Prominent notice on homepage</li>
+                      <li>• Banner notification on website</li>
+                      <li>• Email notification (if contact provided)</li>
+                      <li>• 30-day advance notice when possible</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Acceptance of Changes -->
+              <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl p-6 border border-green-200 dark:border-green-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  Acceptance of Updated Terms
+                </h3>
+                <div class="space-y-4">
+                  <p class="text-gray-600 dark:text-gray-400">
+                    Your continued use of our service after changes become effective constitutes acceptance of the updated terms.
+                  </p>
+                  <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">Effective Date:</strong>
+                      <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                        Changes take effect 30 days after posting or immediately for legal compliance
+                      </p>
+                    </div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">Disagreement:</strong>
+                      <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                        If you disagree with changes, discontinue using our service
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12. Contact & Legal -->
+      <div id="contact" class="bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-violet-500 to-violet-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">12</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Contact & Legal Information</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                How to contact us for questions, legal matters, and dispute resolution.
+              </p>
+
+              <!-- Contact Methods -->
+              <div class="grid md:grid-cols-2 gap-6">
+                <!-- General Contact -->
+                <div class="bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-900/20 dark:to-purple-900/20 rounded-2xl p-6 border border-violet-200 dark:border-violet-700">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-violet-600 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                    </svg>
+                    General Support
+                  </h3>
+                  <div class="space-y-3">
+                    <div class="flex items-center">
+                      <svg class="w-4 h-4 mr-2 text-violet-600 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                      </svg>
+                      <a href="/contact" class="text-violet-600 dark:text-violet-400 hover:text-violet-700 dark:hover:text-violet-300 font-medium">
+                        Contact Form
+                      </a>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                      For general questions, technical support, and feedback
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Legal Contact -->
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-700">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16l3-1m-3 1l-3-1"></path>
+                    </svg>
+                    Legal Matters
+                  </h3>
+                  <div class="space-y-3">
+                    <div class="flex items-center">
+                      <svg class="w-4 h-4 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                      </svg>
+                      <a href="mailto:legal@autodownloadcenter.com" class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium">
+                        legal@autodownloadcenter.com
+                      </a>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                      For legal inquiries, DMCA requests, and terms-related questions
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Governing Law -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  Governing Law & Jurisdiction
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Applicable Law</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                      These Terms of Service are governed by and construed in accordance with the laws of 
+                      the jurisdiction where Auto Download Center operates, without regard to conflict of law principles.
+                    </p>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Dispute Resolution</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                      Any disputes arising from these terms will be resolved through binding arbitration 
+                      or in the courts of competent jurisdiction in our operating location.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Response Times -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Response Times & Expectations</h3>
+                <div class="grid md:grid-cols-3 gap-4">
+                  <div>
+                    <strong class="text-gray-900 dark:text-gray-100">General Inquiries:</strong>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                      Within 48 hours during business days
+                    </p>
+                  </div>
+                  <div>
+                    <strong class="text-gray-900 dark:text-gray-100">Legal Matters:</strong>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                      Within 5-7 business days
+                    </p>
+                  </div>
+                  <div>
+                    <strong class="text-gray-900 dark:text-gray-100">DMCA Requests:</strong>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                      Within 24-48 hours
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Severability -->
+              <div class="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-yellow-200 dark:border-yellow-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Severability & Entire Agreement</h3>
+                <div class="space-y-3">
+                  <p class="text-gray-600 dark:text-gray-400">
+                    <strong>Severability:</strong> If any provision of these terms is found to be unenforceable, 
+                    the remaining provisions will continue in full force and effect.
+                  </p>
+                  <p class="text-gray-600 dark:text-gray-400">
+                    <strong>Entire Agreement:</strong> These Terms of Service, together with our Privacy Policy, 
+                    constitute the entire agreement between you and Auto Download Center regarding your use of our service.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. Termination & Violations -->
+      <div id="termination" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">10</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Termination & Violations</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                Conditions under which access to our service may be terminated and how violations are handled.
+              </p>
+
+              <!-- Termination Rights -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                  </svg>
+                  Our Termination Rights
+                </h3>
+                <div class="space-y-4">
+                  <p class="text-gray-600 dark:text-gray-400">
+                    We reserve the right to terminate or suspend access to our service immediately, without prior notice, for:
+                  </p>
+                  <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Immediate Termination</h4>
+                      <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                        <li>• Violation of these terms of service</li>
+                        <li>• Illegal or harmful activities</li>
+                        <li>• Security threats or attacks</li>
+                        <li>• Abuse of our systems or resources</li>
+                        <li>• Fraudulent or deceptive behavior</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Discretionary Termination</h4>
+                      <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                        <li>• Repeated policy violations</li>
+                        <li>• Disruptive behavior</li>
+                        <li>• Legal compliance requirements</li>
+                        <li>• Business operational needs</li>
+                        <li>• Any reason at our sole discretion</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- User Termination -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                  </svg>
+                  Your Termination Rights
+                </h3>
+                <div class="space-y-4">
+                  <p class="text-gray-600 dark:text-gray-400">
+                    You may discontinue using our service at any time without notice. Since our service requires no registration, 
+                    simply stop accessing our website to terminate your use.
+                  </p>
+                  <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 border border-blue-200 dark:border-blue-700">
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Data Retention After Termination</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Local browser data remains under your control</li>
+                      <li>• Anonymous analytics data may be retained</li>
+                      <li>• No personal account data to delete</li>
+                      <li>• Downloaded software remains on your device</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Violation Handling -->
+              <div class="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-2xl p-6 border border-orange-200 dark:border-orange-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                  </svg>
+                  Violation Investigation Process
+                </h3>
+                <div class="space-y-4">
+                  <p class="text-gray-600 dark:text-gray-400">
+                    When violations are reported or detected, we follow a structured investigation process:
+                  </p>
+                  <div class="grid md:grid-cols-3 gap-4">
+                    <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-600">
+                      <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <span class="text-white font-bold text-sm">1</span>
+                      </div>
+                      <h4 class="font-semibold text-gray-900 dark:text-gray-100 text-sm mb-1">Detection</h4>
+                      <p class="text-gray-600 dark:text-gray-400 text-xs">Automated monitoring and user reports</p>
+                    </div>
+                    <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-600">
+                      <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <span class="text-white font-bold text-sm">2</span>
+                      </div>
+                      <h4 class="font-semibold text-gray-900 dark:text-gray-100 text-sm mb-1">Investigation</h4>
+                      <p class="text-gray-600 dark:text-gray-400 text-xs">Review evidence and assess severity</p>
+                    </div>
+                    <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-600">
+                      <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <span class="text-white font-bold text-sm">3</span>
+                      </div>
+                      <h4 class="font-semibold text-gray-900 dark:text-gray-100 text-sm mb-1">Action</h4>
+                      <p class="text-gray-600 dark:text-gray-400 text-xs">Implement appropriate measures</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Enforcement Actions -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                  Enforcement Actions
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Progressive Measures</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Warning notifications</li>
+                      <li>• Temporary access restrictions</li>
+                      <li>• IP address blocking</li>
+                      <li>• Permanent service ban</li>
+                      <li>• Legal action if necessary</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Cooperation</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Law enforcement agencies</li>
+                      <li>• Copyright holders</li>
+                      <li>• Other affected parties</li>
+                      <li>• Industry security organizations</li>
+                      <li>• Regulatory authorities</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Survival Clause -->
+              <div class="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-6 border border-purple-200 dark:border-purple-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Survival of Terms</h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  The following sections survive termination of your access: Disclaimers, Limitation of Liability, 
+                  Indemnification, Governing Law, and any other provisions that by their nature should survive termination.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Limitation of Liability -->
+      <div id="liability" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">9</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Limitation of Liability</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                Important limitations on our liability for damages that may arise from using our service.
+              </p>
+
+              <!-- Liability Exclusions -->
+              <div class="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-red-200 dark:border-red-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                  </svg>
+                  Exclusion of Liability
+                </h3>
+                <div class="space-y-4">
+                  <p class="text-gray-600 dark:text-gray-400 font-medium">
+                    TO THE MAXIMUM EXTENT PERMITTED BY LAW, AUTO DOWNLOAD CENTER SHALL NOT BE LIABLE FOR ANY DAMAGES ARISING FROM YOUR USE OF OUR SERVICE.
+                  </p>
+                  <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Excluded Damages Include:</h4>
+                      <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                        <li>• Direct, indirect, or consequential damages</li>
+                        <li>• Loss of profits or business opportunities</li>
+                        <li>• Data loss or corruption</li>
+                        <li>• System downtime or interruption</li>
+                        <li>• Personal injury or property damage</li>
+                        <li>• Punitive or exemplary damages</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Scenarios Covered:</h4>
+                      <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                        <li>• Malware from downloaded software</li>
+                        <li>• Software compatibility issues</li>
+                        <li>• Broken or malicious download links</li>
+                        <li>• Service outages or unavailability</li>
+                        <li>• Inaccurate software information</li>
+                        <li>• Third-party service failures</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Damage Cap -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-pink-600 dark:text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                  </svg>
+                  Maximum Liability Cap
+                </h3>
+                <div class="space-y-4">
+                  <p class="text-gray-600 dark:text-gray-400">
+                    In jurisdictions where liability cannot be completely excluded, our total liability is limited to:
+                  </p>
+                  <div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl p-4 border border-blue-200 dark:border-blue-700">
+                    <div class="text-center">
+                      <div class="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">$100 USD</div>
+                      <p class="text-gray-600 dark:text-gray-400 text-sm">
+                        Maximum total liability for all claims arising from your use of our service
+                      </p>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 dark:text-gray-400 text-sm">
+                    This limitation applies regardless of the legal theory under which damages are claimed, 
+                    including breach of contract, tort, or statutory claims.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Indemnification -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                  </svg>
+                  User Indemnification
+                </h3>
+                <div class="space-y-4">
+                  <p class="text-gray-600 dark:text-gray-400">
+                    You agree to indemnify and hold harmless Auto Download Center from claims arising from:
+                  </p>
+                  <div class="grid md:grid-cols-2 gap-4">
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                      <li>• Your violation of these terms</li>
+                      <li>• Your use of downloaded software</li>
+                      <li>• Your violation of applicable laws</li>
+                      <li>• Infringement of third-party rights</li>
+                    </ul>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                      <li>• Misuse of our platform</li>
+                      <li>• Unauthorized access attempts</li>
+                      <li>• False or misleading information</li>
+                      <li>• Harm to other users or third parties</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Jurisdictional Variations -->
+              <div class="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-yellow-200 dark:border-yellow-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  Jurisdictional Considerations
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  Some jurisdictions do not allow the exclusion or limitation of certain damages. 
+                  In such cases, our liability is limited to the maximum extent permitted by applicable law. 
+                  These limitations may not apply to you if prohibited by local consumer protection laws.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Disclaimers & Warranties -->
+      <div id="disclaimers" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">8</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Disclaimers & Warranties</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                Important legal disclaimers regarding the use of our service and the software we index.
+              </p>
+
+              <!-- Service Disclaimers -->
+              <div class="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-red-200 dark:border-red-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                  </svg>
+                  "AS IS" Service Disclaimer
+                </h3>
+                <div class="space-y-4">
+                  <p class="text-gray-600 dark:text-gray-400 font-medium">
+                    AUTO DOWNLOAD CENTER IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, 
+                    EITHER EXPRESS OR IMPLIED.
+                  </p>
+                  <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">We Do Not Warrant:</h4>
+                      <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                        <li>• Uninterrupted or error-free service</li>
+                        <li>• Accuracy of software information</li>
+                        <li>• Availability of download links</li>
+                        <li>• Compatibility with your system</li>
+                        <li>• Freedom from viruses or malware</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Excluded Warranties:</h4>
+                      <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                        <li>• Merchantability</li>
+                        <li>• Fitness for particular purpose</li>
+                        <li>• Non-infringement</li>
+                        <li>• Title or ownership</li>
+                        <li>• Quiet enjoyment</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Software Disclaimers -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-teal-600 dark:text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                  Third-Party Software Disclaimers
+                </h3>
+                <div class="space-y-4">
+                  <p class="text-gray-600 dark:text-gray-400">
+                    We are not responsible for the functionality, safety, or legality of third-party software:
+                  </p>
+                  <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">No Responsibility For:</h4>
+                      <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                        <li>• Software bugs or defects</li>
+                        <li>• Data loss or corruption</li>
+                        <li>• System crashes or instability</li>
+                        <li>• Security vulnerabilities</li>
+                        <li>• License compliance issues</li>
+                        <li>• Performance problems</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">User Responsibility:</h4>
+                      <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                        <li>• Verify software authenticity</li>
+                        <li>• Check system requirements</li>
+                        <li>• Backup data before installation</li>
+                        <li>• Use antivirus protection</li>
+                        <li>• Read software documentation</li>
+                        <li>• Contact developers for support</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Information Accuracy -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  Information Accuracy Disclaimer
+                </h3>
+                <div class="space-y-4">
+                  <p class="text-gray-600 dark:text-gray-400">
+                    While we strive for accuracy, we cannot guarantee that all information is current, complete, or error-free:
+                  </p>
+                  <div class="grid md:grid-cols-3 gap-4">
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">Software Descriptions:</strong>
+                      <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                        May not reflect latest features or changes
+                      </p>
+                    </div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">Version Information:</strong>
+                      <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                        May not be the most current available
+                      </p>
+                    </div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">System Requirements:</strong>
+                      <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                        Should be verified with original sources
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Legal Compliance -->
+              <div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Legal Compliance Disclaimer</h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  Users are solely responsible for ensuring their use of software complies with all applicable laws, 
+                  regulations, and license terms in their jurisdiction. We provide no legal advice and recommend 
+                  consulting with legal professionals for compliance questions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Third-Party Links & Services -->
+      <div id="third-party" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">7</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Third-Party Links & Services</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                Our platform contains links to external websites and services. Understanding your interactions with these third parties is important.
+              </p>
+
+              <!-- External Links -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                  </svg>
+                  External Download Links
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Official Sources</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Direct links to developer websites</li>
+                      <li>• Official app stores and repositories</li>
+                      <li>• Verified download platforms</li>
+                      <li>• Open source project hosting sites</li>
+                      <li>• Publisher-approved distribution channels</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Link Verification</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Regular verification of link validity</li>
+                      <li>• Security scanning for malware</li>
+                      <li>• Authenticity checks with developers</li>
+                      <li>• Removal of broken or suspicious links</li>
+                      <li>• User reporting system for issues</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Third-Party Services -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H3m2 0h4M9 7h6m-6 4h6m-6 4h6"></path>
+                  </svg>
+                  Integrated Services
+                </h3>
+                <div class="space-y-4">
+                  <div class="grid md:grid-cols-3 gap-4">
+                    <div class="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200 dark:border-blue-700">
+                      <h4 class="font-semibold text-gray-900 dark:text-gray-100 text-sm mb-2">SafelinkU</h4>
+                      <p class="text-gray-600 dark:text-gray-400 text-xs">Monetization service for download links</p>
+                    </div>
+                    <div class="text-center p-4 bg-green-50 dark:bg-green-900/20 rounded-xl border border-green-200 dark:border-green-700">
+                      <h4 class="font-semibold text-gray-900 dark:text-gray-100 text-sm mb-2">Vercel</h4>
+                      <p class="text-gray-600 dark:text-gray-400 text-xs">Hosting and analytics platform</p>
+                    </div>
+                    <div class="text-center p-4 bg-purple-50 dark:bg-purple-900/20 rounded-xl border border-purple-200 dark:border-purple-700">
+                      <h4 class="font-semibold text-gray-900 dark:text-gray-100 text-sm mb-2">Supabase</h4>
+                      <p class="text-gray-600 dark:text-gray-400 text-xs">Database and backend services</p>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 dark:text-gray-400 text-sm">
+                    Each service operates under its own terms of service and privacy policy. 
+                    Your interactions with these services are governed by their respective agreements.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Disclaimers -->
+              <div class="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-red-200 dark:border-red-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                  </svg>
+                  Important Disclaimers
+                </h3>
+                <div class="space-y-4">
+                  <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">No Control Over Third Parties:</strong>
+                      <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                        We do not control external websites, their content, availability, or policies
+                      </p>
+                    </div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">No Endorsement:</strong>
+                      <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                        Links do not constitute endorsement of third-party content or services
+                      </p>
+                    </div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">User Responsibility:</strong>
+                      <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                        You are responsible for reviewing third-party terms and privacy policies
+                      </p>
+                    </div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">No Liability:</strong>
+                      <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                        We are not liable for issues arising from third-party interactions
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- User Guidelines -->
+              <div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Best Practices for External Links</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• Verify the authenticity of download sources</li>
+                    <li>• Read terms and conditions before downloading</li>
+                    <li>• Use antivirus software for additional protection</li>
+                    <li>• Report suspicious or broken links to us</li>
+                  </ul>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• Check software licenses before use</li>
+                    <li>• Be cautious with personal information</li>
+                    <li>• Keep software updated for security</li>
+                    <li>• Contact developers for support issues</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Content & Licensing -->
+      <div id="content-licensing" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">6</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Content & Licensing</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                Understanding the licensing and ownership of content on our platform is essential for legal compliance.
+              </p>
+
+              <!-- Our Content -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                  Platform Content Ownership
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Our Intellectual Property</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Website design and layout</li>
+                      <li>• Auto Download Center branding</li>
+                      <li>• Original descriptions and content</li>
+                      <li>• Database structure and organization</li>
+                      <li>• Custom features and functionality</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">User License to Our Content</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Personal, non-commercial use only</li>
+                      <li>• No redistribution or modification</li>
+                      <li>• No reverse engineering allowed</li>
+                      <li>• Attribution required for any use</li>
+                      <li>• Revocable at our discretion</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Third-Party Software -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                  </svg>
+                  Third-Party Software Licensing
+                </h3>
+                <div class="space-y-4">
+                  <p class="text-gray-600 dark:text-gray-400">
+                    All software listed on our platform is owned by their respective developers and publishers. 
+                    Each software has its own license terms that users must comply with.
+                  </p>
+                  <div class="grid md:grid-cols-3 gap-4">
+                    <div class="text-center p-4 bg-green-50 dark:bg-green-900/20 rounded-xl border border-green-200 dark:border-green-700">
+                      <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                      </div>
+                      <h4 class="font-semibold text-gray-900 dark:text-gray-100 text-sm">Open Source</h4>
+                      <p class="text-gray-600 dark:text-gray-400 text-xs mt-1">Free to use, modify, distribute</p>
+                    </div>
+                    <div class="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200 dark:border-blue-700">
+                      <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                      </div>
+                      <h4 class="font-semibold text-gray-900 dark:text-gray-100 text-sm">Freeware</h4>
+                      <p class="text-gray-600 dark:text-gray-400 text-xs mt-1">Free to use, restrictions may apply</p>
+                    </div>
+                    <div class="text-center p-4 bg-purple-50 dark:bg-purple-900/20 rounded-xl border border-purple-200 dark:border-purple-700">
+                      <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                      </div>
+                      <h4 class="font-semibold text-gray-900 dark:text-gray-100 text-sm">Public Domain</h4>
+                      <p class="text-gray-600 dark:text-gray-400 text-xs mt-1">No restrictions, completely free</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- User Responsibilities -->
+              <div class="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-yellow-200 dark:border-yellow-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                  </svg>
+                  Your Licensing Responsibilities
+                </h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• Read and understand each software's license</li>
+                    <li>• Comply with all license terms and conditions</li>
+                    <li>• Respect attribution requirements</li>
+                    <li>• Use software only as permitted by its license</li>
+                  </ul>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• Do not redistribute without permission</li>
+                    <li>• Report license violations to developers</li>
+                    <li>• Seek legal advice for commercial use</li>
+                    <li>• Keep license documentation with software</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Prohibited Use -->
+      <div id="prohibited-use" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">5</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Prohibited Use</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                To maintain a safe and legal platform, certain activities are strictly prohibited when using our service.
+              </p>
+
+              <!-- Illegal Activities -->
+              <div class="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-red-200 dark:border-red-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                  </svg>
+                  Strictly Prohibited Activities
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Illegal Content & Activities</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>✗ Downloading or distributing pirated software</li>
+                      <li>✗ Circumventing software licensing requirements</li>
+                      <li>✗ Using software for illegal purposes</li>
+                      <li>✗ Violating copyright or intellectual property laws</li>
+                      <li>✗ Distributing malware or viruses</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Platform Abuse</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>✗ Automated scraping or data harvesting</li>
+                      <li>✗ Overloading our servers or infrastructure</li>
+                      <li>✗ Attempting to hack or breach security</li>
+                      <li>✗ Creating fake accounts or impersonation</li>
+                      <li>✗ Spamming or sending unsolicited content</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Misuse Examples -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  Additional Restrictions
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Commercial Misuse</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Reselling access to our platform</li>
+                      <li>• Creating competing services using our data</li>
+                      <li>• Bulk downloading for redistribution</li>
+                      <li>• Using our brand without permission</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Technical Violations</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Reverse engineering our platform</li>
+                      <li>• Bypassing rate limits or restrictions</li>
+                      <li>• Interfering with other users' access</li>
+                      <li>• Exploiting security vulnerabilities</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Consequences -->
+              <div class="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-6 border border-purple-200 dark:border-purple-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Consequences of Violations</h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  Violations of these terms may result in immediate termination of access, legal action, 
+                  and cooperation with law enforcement. We reserve the right to investigate suspected 
+                  violations and take appropriate action to protect our platform and users.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. User Rights & Responsibilities -->
+      <div id="user-rights" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">4</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">User Rights & Responsibilities</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                As a user of Auto Download Center, you have certain rights and responsibilities when using our platform.
+              </p>
+
+              <!-- User Rights -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  Your Rights
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Access & Usage</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Free access to all listed software</li>
+                      <li>• Browse and search without registration</li>
+                      <li>• Download software from official sources</li>
+                      <li>• Use our platform for personal and commercial purposes</li>
+                      <li>• Access updated software information</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Privacy & Data</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Anonymous browsing experience</li>
+                      <li>• Control over your data preferences</li>
+                      <li>• Right to request data deletion</li>
+                      <li>• Transparent privacy practices</li>
+                      <li>• No mandatory registration required</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- User Responsibilities -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                  Your Responsibilities
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Legal Compliance</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Follow all applicable laws and regulations</li>
+                      <li>• Respect software licenses and terms</li>
+                      <li>• Use software only for legal purposes</li>
+                      <li>• Comply with export control laws</li>
+                      <li>• Respect intellectual property rights</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Platform Usage</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Use the service responsibly</li>
+                      <li>• Do not abuse or overload our systems</li>
+                      <li>• Report security vulnerabilities</li>
+                      <li>• Provide accurate information when contacting us</li>
+                      <li>• Respect other users and our community</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Age Requirements -->
+              <div class="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-yellow-200 dark:border-yellow-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                  </svg>
+                  Age Requirements & Parental Consent
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  Users must be at least 13 years old to use our service. Users under 18 should have parental 
+                  guidance when downloading and installing software. Parents are responsible for monitoring 
+                  their children's software usage and ensuring age-appropriate content.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="py-20 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+          Questions About These Terms?
+        </h2>
+        <p class="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
+          We're committed to transparency and clear communication. Don't hesitate to reach out with any questions about our Terms of Service.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a 
+            href="mailto:legal@autodownloadcenter.com" 
+            class="inline-flex items-center px-8 py-4 bg-white hover:bg-gray-50 text-indigo-600 font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            Contact Legal Team
+          </a>
+          <a 
+            href="/contact" 
+            class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white hover:bg-white/10 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+            </svg>
+            General Support
+          </a>
+          <a 
+            href="/" 
+            class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white hover:bg-white/10 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+            Back to Homepage
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<style>
+  .bg-grid-pattern {
+    background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  @keyframes blob {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+  }
+
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Scroll offset for anchor links */
+  section[id] {
+    scroll-margin-top: 100px;
+  }
+</style>
 </Layout>
