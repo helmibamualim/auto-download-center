@@ -2,6 +2,8 @@ import type { APIRoute } from 'astro';
 import { syncGitHubBatch, syncFDroidBatch } from '../../lib/sync/batch-sync';
 import { supabase } from '../../lib/supabase';
 
+export const prerender = false;
+
 // Batch configuration
 const BATCH_SIZE = 30; // Process 30 apps per batch (safe for Vercel timeout)
 const QUERIES_PER_BATCH = 3; // Process 3 queries per batch

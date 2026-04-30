@@ -16,5 +16,11 @@
   "env": {
     "NODE_VERSION": "22.12.0"
   },
-  "buildCommand": "npm run build"
+  "buildCommand": "npm run build",
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
+    }
+  ]
 }
