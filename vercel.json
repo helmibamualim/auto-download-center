@@ -1,7 +1,8 @@
 {
   "functions": {
-    "api/**/*.js": {
-      "runtime": "nodejs20.x"
+    "api/*.js": {
+      "runtime": "nodejs20.x",
+      "maxDuration": 60
     }
   },
   "crons": [
@@ -9,9 +10,5 @@
       "path": "/api/sync-batch",
       "schedule": "0 2 * * *"
     }
-  ],
-  "env": {
-    "NODE_VERSION": "22.12.0"
-  },
-  "buildCommand": "npm run build"
+  ]
 }
