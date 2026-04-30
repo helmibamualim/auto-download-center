@@ -32,7 +32,7 @@ interface GitHubRelease {
 }
 
 // Expanded topics for better coverage - OPTIMIZED FOR BULK SYNC
-const GITHUB_SEARCH_QUERIES = [
+export const GITHUB_SEARCH_QUERIES = [
   // Mobile - Lower threshold for more apps
   'topic:android stars:>50 language:kotlin',
   'topic:android stars:>50 language:java',
@@ -198,6 +198,202 @@ const GITHUB_SEARCH_QUERIES = [
   'topic:container stars:>50',
   'topic:virtualization stars:>50',
 ];
+
+// Export for batch processing
+export { getCategoryFromRepo, isInstallableFile, formatFileSize, delay };
+
+// Batch sync function for specific queries
+export async function syncGitHubBatch(
+  queries: string[],
+  maxAppsPerQuery: number = 10
+): Promise<{
+  processed: number;
+  inserted: number;
+  updated: number;
+  skipped: number;
+  failed: number;
+}> {
+  const githubToken = import.meta.env.GITHUB_TOKEN;
+  
+  if (!githubToken) {
+    console.error('❌ GITHUB_TOKEN not found');
+    return { processed: 0, inserted: 0, updated: 0, skipped: 0, failed: 0 };
+  }
+
+  const headers = {
+    'Authorization': `token ${githubToken}`,
+    'Accept': 'application/vnd.github.v3+json',
+    'User-Agent': 'Auto-Download-Center'
+  };
+
+  let totalAdded = 0;
+  let totalUpdated = 0;
+  let totalSkipped = 0;
+  let totalFailed = 0;
+  let totalProcessed = 0;
+
+  for (const query of queries) {
+    try {
+      console.log(`🔍 Searching: ${query}`);
+      
+      // Add delay to respect rate limits
+      await delay(2000);
+      
+      const reposResponse = await fetch(
+        `https://api.github.com/search/repositories?q=${encodeURIComponent(query)}&sort=stars&order=desc&per_page=${maxAppsPerQuery}`,
+        { headers }
+      );
+
+      if (!reposResponse.ok) {
+        if (reposResponse.status === 403) {
+          console.error('⚠️  Rate limit exceeded');
+          totalFailed++;
+          continue;
+        }
+        console.error(`❌ GitHub API error: ${reposResponse.status}`);
+        totalFailed++;
+        continue;
+      }
+
+      const reposData = await reposResponse.json();
+      const repos: GitHubRepo[] = reposData.items || [];
+
+      console.log(`   Found ${repos.length} repositories`);
+      totalProcessed += repos.length;
+
+      for (const repo of repos) {
+        // Skip if not legal software
+        if (!isLegalSoftware(repo.name, repo.description || '')) {
+          totalSkipped++;
+          continue;
+        }
+
+        try {
+          // Add delay between requests
+          await delay(1000);
+          
+          // Get latest release
+          const releaseResponse = await fetch(
+            `https://api.github.com/repos/${repo.full_name}/releases/latest`,
+            { headers }
+          );
+
+          if (!releaseResponse.ok) {
+            totalSkipped++;
+            continue;
+          }
+
+          const release: GitHubRelease = await releaseResponse.json();
+          
+          // Skip if no assets
+          if (!release.assets || release.assets.length === 0) {
+            totalSkipped++;
+            continue;
+          }
+
+          // Process each asset
+          for (const asset of release.assets) {
+            // Validate download URL
+            if (!isValidDownloadUrl(asset.browser_download_url)) {
+              continue;
+            }
+
+            // Skip source code archives
+            if (asset.name.includes('source') || asset.name.endsWith('.tar.gz') && asset.size < 1000000) {
+              continue;
+            }
+
+            const fileType = extractFileType(asset.name);
+            
+            // Skip if not a valid installable file
+            if (!isInstallableFile(fileType)) {
+              continue;
+            }
+
+            const platform = getPlatformFromFileType(fileType);
+            const slug = createSlug(`${repo.name}-${platform}`);
+
+            // Check if app already exists
+            const { data: existingApp } = await supabase
+              .from('apps')
+              .select('id, version')
+              .eq('slug', slug)
+              .single();
+
+            // Skip if same version already exists
+            if (existingApp && existingApp.version === release.tag_name) {
+              totalSkipped++;
+              continue;
+            }
+
+            // Determine category
+            const category = getCategoryFromRepo(repo);
+
+            const appData = {
+              title: repo.name,
+              slug,
+              description: repo.description || `${repo.name} - Open source software from GitHub`,
+              short_description: (repo.description || '').substring(0, 150) || `${repo.name} application`,
+              category,
+              platform,
+              version: release.tag_name,
+              license: repo.license?.name || repo.license?.spdx_id || 'Unknown',
+              developer: repo.owner.login,
+              source_name: 'GitHub',
+              source_url: repo.html_url,
+              original_download_url: asset.browser_download_url,
+              file_type: fileType,
+              file_size: formatFileSize(asset.size),
+              stars: repo.stargazers_count,
+              changelog: release.body || '',
+              is_active: true,
+              last_synced_at: new Date().toISOString(),
+              updated_at: new Date().toISOString()
+            };
+
+            if (existingApp) {
+              // Update existing app
+              await supabase
+                .from('apps')
+                .update(appData)
+                .eq('id', existingApp.id);
+              
+              totalUpdated++;
+              console.log(`   ✅ Updated: ${repo.name} (${platform})`);
+            } else {
+              // Insert new app
+              const { error } = await supabase
+                .from('apps')
+                .insert(appData);
+              
+              if (error) {
+                console.error(`   ❌ Error inserting ${repo.name}:`, error.message);
+                totalFailed++;
+              } else {
+                totalAdded++;
+                console.log(`   ✨ Added: ${repo.name} (${platform})`);
+              }
+            }
+          }
+        } catch (error) {
+          console.error(`   ❌ Error processing ${repo.full_name}:`, error);
+          totalFailed++;
+        }
+      }
+    } catch (error) {
+      console.error(`❌ Error with query "${query}":`, error);
+      totalFailed++;
+    }
+  }
+
+  return {
+    processed: totalProcessed,
+    inserted: totalAdded,
+    updated: totalUpdated,
+    skipped: totalSkipped,
+    failed: totalFailed
+  };
+}
 
 export async function syncEnhancedGitHubApps(maxAppsPerQuery = 30): Promise<void> {
   const githubToken = import.meta.env.GITHUB_TOKEN;
