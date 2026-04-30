@@ -1,135 +1,339 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// SEO Configuration
+const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://auto-download-center.vercel.app';
+const pageTitle = "DMCA Policy - Auto Download Center | Copyright Protection";
+const pageDescription = "Simple and clear DMCA policy for Auto Download Center. We respect copyright and provide easy procedures for reporting concerns.";
+const lastUpdated = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+// DMCA Policy Structured Data
+const dmcaStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "DMCA Policy",
+  "description": pageDescription,
+  "url": `${siteUrl}/dmca`,
+  "dateModified": new Date().toISOString(),
+  "publisher": {
+    "@type": "Organization",
+    "name": "Auto Download Center",
+    "url": siteUrl
+  }
+};
 ---
 
 <Layout 
-  title="DMCA Policy - Auto Download Monetized Center"
-  description="Our DMCA policy and procedure for reporting copyright infringement claims."
+  title={pageTitle}
+  description={pageDescription}
+  canonical={`${siteUrl}/dmca`}
 >
-  <div class="bg-gray-50 dark:bg-gray-900 min-h-screen">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-8">
-        <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">
-          DMCA Copyright Policy
+  <!-- DMCA Policy Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(dmcaStructuredData)} slot="head" />
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 py-20 overflow-hidden">
+    <!-- Animated Background -->
+    <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-green-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
+    <div class="absolute top-0 right-1/4 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-4xl mx-auto">
+        <!-- Badge -->
+        <div class="inline-flex items-center px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-sm font-medium mb-6 backdrop-blur-sm">
+          <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
+          Copyright Protection
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-100 mb-6 leading-tight">
+          DMCA Policy
         </h1>
         
-        <div class="prose dark:prose-invert max-w-none">
-          <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
-            Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-          </p>
+        <!-- Subtitle -->
+        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
+          We respect copyright and make it easy to report concerns. Simple process, quick response.
+        </p>
 
-          <h2>Our Commitment</h2>
-          <p>
-            Auto Download Monetized Center respects the intellectual property rights of others and expects our users to do the same. We only index free, open-source, and legally distributable software from official sources.
-          </p>
+        <!-- Last Updated -->
+        <div class="inline-flex items-center px-6 py-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-700/50">
+          <svg class="w-5 h-5 text-gray-500 dark:text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+          </svg>
+          <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Last updated: {lastUpdated}</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <h2>What We Index</h2>
-          <p>
-            We exclusively index software that is:
-          </p>
-          <ul>
-            <li>Free and open-source software (FOSS)</li>
-            <li>Freeware officially distributed by developers</li>
-            <li>Software with explicit permission for redistribution</li>
-            <li>Public domain software</li>
-          </ul>
-
-          <h2>What We Don't Index</h2>
-          <p>
-            We strictly prohibit indexing of:
-          </p>
-          <ul>
-            <li>Copyrighted commercial software</li>
-            <li>Cracked, pirated, or modified software</li>
-            <li>Software without proper licensing</li>
-            <li>Any content that infringes copyright</li>
-          </ul>
-
-          <h2>DMCA Takedown Procedure</h2>
-          <p>
-            If you believe that content on our site infringes your copyright, please provide us with a written notice containing:
-          </p>
-
-          <h3>Required Information</h3>
-          <ul>
-            <li>Your physical or electronic signature</li>
-            <li>Identification of the copyrighted work claimed to be infringed</li>
-            <li>Identification of the material that is claimed to be infringing and information reasonably sufficient to permit us to locate the material</li>
-            <li>Your contact information (address, telephone number, email address)</li>
-            <li>A statement that you have a good faith belief that use of the material is not authorized by the copyright owner</li>
-            <li>A statement that the information in the notification is accurate, and under penalty of perjury, that you are authorized to act on behalf of the copyright owner</li>
-          </ul>
-
-          <h2>How to Submit a DMCA Notice</h2>
-          <p>
-            Send your DMCA takedown notice to:
-          </p>
-          <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
-            <p><strong>DMCA Agent</strong><br>
-            Auto Download Monetized Center<br>
-            Email: <a href="mailto:dmca@autodownloadcenter.com" class="text-blue-600 dark:text-blue-400">dmca@autodownloadcenter.com</a><br>
-            Subject: DMCA Takedown Request</p>
+  <!-- Table of Contents -->
+  <section class="py-12 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-green-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-3xl p-8 shadow-lg border border-gray-200 dark:border-gray-600">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 flex items-center">
+          <svg class="w-6 h-6 mr-3 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+          </svg>
+          Table of Contents
+        </h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="space-y-2">
+            <a href="#overview" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-green-600 dark:text-green-400 font-medium group-hover:text-green-700 dark:group-hover:text-green-300">1. Our Commitment</span>
+            </a>
+            <a href="#what-we-index" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-green-600 dark:text-green-400 font-medium group-hover:text-green-700 dark:group-hover:text-green-300">2. What We Index</span>
+            </a>
+            <a href="#reporting-process" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-green-600 dark:text-green-400 font-medium group-hover:text-green-700 dark:group-hover:text-green-300">3. Reporting Process</span>
+            </a>
+            <a href="#how-to-report" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-green-600 dark:text-green-400 font-medium group-hover:text-green-700 dark:group-hover:text-green-300">4. How to Report</span>
+            </a>
           </div>
+          <div class="space-y-2">
+            <a href="#our-response" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-green-600 dark:text-green-400 font-medium group-hover:text-green-700 dark:group-hover:text-green-300">5. Our Response</span>
+            </a>
+            <a href="#counter-notification" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-green-600 dark:text-green-400 font-medium group-hover:text-green-700 dark:group-hover:text-green-300">6. Counter-Notification</span>
+            </a>
+            <a href="#important-notes" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-green-600 dark:text-green-400 font-medium group-hover:text-green-700 dark:group-hover:text-green-300">7. Important Notes</span>
+            </a>
+            <a href="#contact" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-green-600 dark:text-green-400 font-medium group-hover:text-green-700 dark:group-hover:text-green-300">8. Contact Information</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <h2>Response Time</h2>
-          <p>
-            We will respond to valid DMCA notices within 24-48 hours. Upon receiving a valid notice, we will:
-          </p>
-          <ul>
-            <li>Remove or disable access to the allegedly infringing material</li>
-            <li>Notify the user who posted the material</li>
-            <li>Provide the user with a copy of the takedown notice</li>
-          </ul>
-
-          <h2>Counter-Notification</h2>
-          <p>
-            If you believe your content was removed in error, you may submit a counter-notification containing:
-          </p>
-          <ul>
-            <li>Your physical or electronic signature</li>
-            <li>Identification of the material that was removed</li>
-            <li>A statement under penalty of perjury that you have a good faith belief that the material was removed as a result of mistake or misidentification</li>
-            <li>Your contact information and consent to jurisdiction</li>
-          </ul>
-
-          <h2>False Claims</h2>
-          <p>
-            Please note that under Section 512(f) of the DMCA, any person who knowingly materially misrepresents that material is infringing may be subject to liability for damages.
-          </p>
-
-          <h2>Repeat Infringers</h2>
-          <p>
-            We have a policy of terminating, in appropriate circumstances, users who are repeat infringers of intellectual property rights.
-          </p>
-
-          <h2>Safe Harbor</h2>
-          <p>
-            We operate as a search engine and index service. We do not host any files directly but provide links to official sources. We comply with the Digital Millennium Copyright Act (DMCA) safe harbor provisions.
-          </p>
-
-          <h2>Contact Information</h2>
-          <p>
-            For all DMCA-related inquiries:
-          </p>
-          <ul>
-            <li>Email: <a href="mailto:dmca@autodownloadcenter.com" class="text-blue-600 dark:text-blue-400">dmca@autodownloadcenter.com</a></li>
-            <li>General Contact: <a href="/contact" class="text-blue-600 dark:text-blue-400">Contact Page</a></li>
-          </ul>
-
-          <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4 mt-8">
-            <div class="flex">
-              <div class="flex-shrink-0">
-                <svg class="h-5 w-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-                </svg>
-              </div>
-              <div class="ml-3">
-                <h3 class="text-sm font-medium text-yellow-800 dark:text-yellow-200">
-                  Important Notice
+  <!-- Main Content -->
+  <section class="py-20 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- 1. Our Commitment -->
+      <div id="overview" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">1</span>
+          </div>
+          <div>
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Our Commitment</h2>
+            <div class="prose dark:prose-invert max-w-none">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                Auto Download Center respects intellectual property rights and takes copyright seriously. 
+                We only provide information about free and legal software from official sources.
+              </p>
+              
+              <!-- Key Principles -->
+              <div class="bg-gradient-to-r from-green-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 mb-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-6 h-6 mr-2 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  Our Copyright Principles
                 </h3>
-                <div class="mt-2 text-sm text-yellow-700 dark:text-yellow-300">
-                  <p>
-                    We only index free and open-source software. If you find any copyrighted material that shouldn't be listed, please contact us immediately and we will investigate and remove it promptly.
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div class="flex items-start">
+                    <div class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">Respect Rights:</strong>
+                      <span class="text-gray-600 dark:text-gray-400"> We respect all intellectual property rights</span>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">Legal Content Only:</strong>
+                      <span class="text-gray-600 dark:text-gray-400"> Only free and legal software information</span>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">Quick Response:</strong>
+                      <span class="text-gray-600 dark:text-gray-400"> Fast response to valid copyright concerns</span>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <div class="w-2 h-2 bg-pink-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">Easy Process:</strong>
+                      <span class="text-gray-600 dark:text-gray-400"> Simple reporting process for copyright holders</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                We serve as an information platform, providing links to official sources and free software. 
+                If you have copyright concerns, we're here to help resolve them quickly and fairly.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 2. What We Index -->
+      <div id="what-we-index" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">2</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">What We Index</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                We only provide information about software that is free, legal, and properly licensed for distribution.
+              </p>
+
+              <!-- What We Include -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  Software We Include
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Free & Open Source</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Open source software (OSS)</li>
+                      <li>• GNU GPL licensed software</li>
+                      <li>• MIT and Apache licensed software</li>
+                      <li>• Creative Commons licensed software</li>
+                      <li>• Public domain software</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Officially Free Software</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Freeware from official developers</li>
+                      <li>• Software with explicit free distribution</li>
+                      <li>• Trial versions from official sources</li>
+                      <li>• Educational software (free versions)</li>
+                      <li>• Community editions</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- What We Don't Include -->
+              <div class="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-red-200 dark:border-red-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                  </svg>
+                  Software We DON'T Include
+                </h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>✗ Copyrighted commercial software</li>
+                    <li>✗ Cracked or pirated software</li>
+                    <li>✗ Modified or patched software</li>
+                    <li>✗ Software without proper licensing</li>
+                  </ul>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>✗ Unauthorized redistributions</li>
+                    <li>✗ Software with unclear licensing</li>
+                    <li>✗ Any copyright-infringing content</li>
+                    <li>✗ Malware or suspicious software</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Our Role -->
+              <div class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  Important: Our Role
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  We are an information platform that provides links to official sources. We don't host files directly 
+                  but help users find legitimate software from authorized distributors and developers.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Reporting Process -->
+      <div id="reporting-process" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">3</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Reporting Process</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                If you believe content on our site infringes your copyright, here's what you need to include in your report:
+              </p>
+
+              <!-- Required Information -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                  Required Information
+                </h3>
+                <div class="space-y-4">
+                  <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Basic Information</h4>
+                      <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                        <li>• Your name and signature</li>
+                        <li>• Your contact information</li>
+                        <li>• Your relationship to the copyright</li>
+                        <li>• Description of your copyrighted work</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Specific Details</h4>
+                      <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                        <li>• URL of the infringing content</li>
+                        <li>• Description of the infringement</li>
+                        <li>• Good faith statement</li>
+                        <li>• Accuracy statement under penalty of perjury</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Simple Template -->
+              <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl p-6 border border-green-200 dark:border-green-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                  Simple Report Template
+                </h3>
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-4 font-mono text-sm">
+                  <p class="text-gray-600 dark:text-gray-400">
+                    Subject: DMCA Copyright Notice<br><br>
+                    
+                    I am the copyright owner of: [Your copyrighted work]<br>
+                    The infringing content is located at: [URL on our site]<br>
+                    My contact information: [Your email and address]<br><br>
+                    
+                    I have a good faith belief that the use is not authorized.<br>
+                    This information is accurate and I am authorized to act on behalf of the copyright owner.<br><br>
+                    
+                    Signature: [Your name]<br>
+                    Date: [Today's date]
                   </p>
                 </div>
               </div>
@@ -137,6 +341,448 @@ import Layout from '../layouts/Layout.astro';
           </div>
         </div>
       </div>
+
+      <!-- 4. How to Report -->
+      <div id="how-to-report" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">4</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">How to Report</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                Send your copyright notice to our designated agent. We make it simple and straightforward.
+              </p>
+
+              <!-- Contact Information -->
+              <div class="bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-2xl p-6 border border-orange-200 dark:border-orange-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                  DMCA Contact Information
+                </h3>
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6">
+                  <div class="space-y-3">
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">DMCA Agent</strong><br>
+                      <span class="text-gray-600 dark:text-gray-400">Auto Download Center</span>
+                    </div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">Email:</strong>
+                      <a href="mailto:dmca@autodownloadcenter.com" class="text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 font-medium ml-2">
+                        dmca@autodownloadcenter.com
+                      </a>
+                    </div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">Subject Line:</strong>
+                      <span class="text-gray-600 dark:text-gray-400 ml-2">DMCA Copyright Notice</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Alternative Contact -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Alternative Contact Methods</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <strong class="text-gray-900 dark:text-gray-100">General Contact:</strong>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                      Use our <a href="/contact" class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300">contact form</a> for urgent matters
+                    </p>
+                  </div>
+                  <div>
+                    <strong class="text-gray-900 dark:text-gray-100">Response Time:</strong>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                      We respond to valid DMCA notices within 24-48 hours
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 5. Our Response -->
+      <div id="our-response" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">5</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Our Response</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                When we receive a valid copyright notice, we take prompt action to address the concern.
+              </p>
+
+              <!-- Response Process -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-teal-600 dark:text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                  </svg>
+                  Our Response Process
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Immediate Actions (24-48 hours)</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Review the copyright notice</li>
+                      <li>• Verify the claim details</li>
+                      <li>• Remove or disable access to content</li>
+                      <li>• Send confirmation to copyright holder</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Follow-up Actions</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Notify affected users (if applicable)</li>
+                      <li>• Document the takedown</li>
+                      <li>• Monitor for repeat issues</li>
+                      <li>• Update our content filters</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Response Timeline -->
+              <div class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  Response Timeline
+                </h3>
+                <div class="grid md:grid-cols-3 gap-4">
+                  <div class="text-center">
+                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <span class="text-white font-bold">1</span>
+                    </div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 text-sm">Within 24 Hours</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-xs mt-1">Initial review and acknowledgment</p>
+                  </div>
+                  <div class="text-center">
+                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <span class="text-white font-bold">2</span>
+                    </div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 text-sm">Within 48 Hours</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-xs mt-1">Content removal if claim is valid</p>
+                  </div>
+                  <div class="text-center">
+                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <span class="text-white font-bold">3</span>
+                    </div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 text-sm">Follow-up</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-xs mt-1">Confirmation and documentation</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Counter-Notification -->
+      <div id="counter-notification" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">6</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Counter-Notification</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                If you believe your content was removed by mistake, you can submit a counter-notification.
+              </p>
+
+              <!-- Counter-Notification Process -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                  Counter-Notification Requirements
+                </h3>
+                <div class="space-y-4">
+                  <p class="text-gray-600 dark:text-gray-400">
+                    If you believe content was removed due to mistake or misidentification, include:
+                  </p>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• Your signature and contact information</li>
+                    <li>• Identification of the removed material</li>
+                    <li>• Statement of good faith belief that removal was a mistake</li>
+                    <li>• Consent to jurisdiction in your location</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Counter-Notification Process -->
+              <div class="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-6 border border-purple-200 dark:border-purple-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">What Happens Next</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <strong class="text-gray-900 dark:text-gray-100">We Will:</strong>
+                    <ul class="text-gray-600 dark:text-gray-400 text-sm mt-1 space-y-1">
+                      <li>• Review your counter-notification</li>
+                      <li>• Forward it to the original complainant</li>
+                      <li>• Wait 10-14 business days</li>
+                      <li>• Restore content if no court action is filed</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <strong class="text-gray-900 dark:text-gray-100">Send Counter-Notice To:</strong>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                      Same email: <a href="mailto:dmca@autodownloadcenter.com" class="text-purple-600 dark:text-purple-400">dmca@autodownloadcenter.com</a><br>
+                      Subject: DMCA Counter-Notification
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Important Notes -->
+      <div id="important-notes" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">7</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Important Notes</h2>
+            
+            <div class="space-y-6">
+              <!-- False Claims Warning -->
+              <div class="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-yellow-200 dark:border-yellow-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                  </svg>
+                  False Claims Warning
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  Under Section 512(f) of the DMCA, knowingly making false claims about copyright infringement 
+                  may result in liability for damages. Please ensure your claims are accurate and made in good faith.
+                </p>
+              </div>
+
+              <!-- Our Policies -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Our Policies</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Repeat Infringers</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                      We may remove content from repeat infringers and take appropriate action 
+                      to prevent future violations.
+                    </p>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Safe Harbor</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                      We operate under DMCA safe harbor provisions as an information service 
+                      that links to official sources.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Good Faith Efforts -->
+              <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl p-6 border border-green-200 dark:border-green-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  Our Good Faith Efforts
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  We proactively work to prevent copyright infringement by only indexing free and legal software, 
+                  verifying sources, and responding quickly to valid concerns. We're committed to respecting 
+                  intellectual property rights while providing valuable information to users.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Contact Information -->
+      <div id="contact" class="bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">8</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Contact Information</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                For all DMCA-related inquiries and copyright concerns, here's how to reach us:
+              </p>
+
+              <div class="grid md:grid-cols-2 gap-6">
+                <!-- DMCA Contact -->
+                <div class="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-red-200 dark:border-red-700">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                    DMCA Agent
+                  </h3>
+                  <div class="space-y-3">
+                    <div class="flex items-center">
+                      <svg class="w-4 h-4 mr-2 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                      </svg>
+                      <a href="mailto:dmca@autodownloadcenter.com" class="text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 font-medium">
+                        dmca@autodownloadcenter.com
+                      </a>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                      For copyright notices, takedown requests, and counter-notifications
+                    </p>
+                  </div>
+                </div>
+
+                <!-- General Contact -->
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-700">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                    </svg>
+                    General Support
+                  </h3>
+                  <div class="space-y-3">
+                    <div class="flex items-center">
+                      <svg class="w-4 h-4 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                      </svg>
+                      <a href="/contact" class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium">
+                        Contact Form
+                      </a>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                      For general questions and urgent copyright matters
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Response Times -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Response Times</h3>
+                <div class="grid md:grid-cols-3 gap-4">
+                  <div>
+                    <strong class="text-gray-900 dark:text-gray-100">DMCA Notices:</strong>
+                    <span class="text-gray-600 dark:text-gray-400"> Within 24-48 hours</span>
+                  </div>
+                  <div>
+                    <strong class="text-gray-900 dark:text-gray-100">Counter-Notifications:</strong>
+                    <span class="text-gray-600 dark:text-gray-400"> Within 48-72 hours</span>
+                  </div>
+                  <div>
+                    <strong class="text-gray-900 dark:text-gray-100">General Inquiries:</strong>
+                    <span class="text-gray-600 dark:text-gray-400"> Within 48 hours</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Final Note -->
+              <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl p-6 border border-green-200 dark:border-green-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Our Commitment</h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  We're committed to respecting copyright while providing valuable information about free and legal software. 
+                  We work cooperatively with copyright holders to address concerns quickly and fairly.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="py-20 bg-gradient-to-br from-green-600 via-blue-600 to-purple-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+          Copyright Concerns?
+        </h2>
+        <p class="text-xl text-green-100 mb-8 max-w-2xl mx-auto">
+          We respect intellectual property rights and respond quickly to valid copyright concerns. Contact us anytime.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a 
+            href="mailto:dmca@autodownloadcenter.com" 
+            class="inline-flex items-center px-8 py-4 bg-white hover:bg-gray-50 text-green-600 font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            Contact DMCA Agent
+          </a>
+          <a 
+            href="/" 
+            class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white hover:bg-white/10 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+            Back to Homepage
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<style>
+  .bg-grid-pattern {
+    background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  @keyframes blob {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+  }
+
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Scroll offset for anchor links */
+  section[id] {
+    scroll-margin-top: 100px;
+  }
+</style>
 </Layout>
