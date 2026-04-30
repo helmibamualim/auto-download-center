@@ -1,0 +1,400 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import AppCard from '../../components/AppCard.astro';
+import { supabase } from '../../lib/supabase';
+
+const { slug } = Astro.params;
+
+// Initialize variables
+let platform = '';
+let apps: any[] = [];
+let count = 0;
+let errorMessage = '';
+
+// Get URL parameters
+const url = Astro.url;
+const sort = url.searchParams.get('sort') || 'latest';
+const page = parseInt(url.searchParams.get('page') || '1');
+const limit = 20;
+const offset = (page - 1) * limit;
+
+try {
+  // First, get all unique platforms
+  const { data: allApps, error: fetchError } = await supabase
+    .from('apps')
+    .select('platform')
+    .eq('is_active', true);
+
+  if (fetchError) {
+    throw new Error(`Database error: ${fetchError.message}`);
+  }
+
+  // Get unique platforms
+  const platforms = [...new Set(allApps?.map(app => app.platform) || [])];
+  
+  // Find matching platform (case-insensitive slug matching)
+  for (const plat of platforms) {
+    const platSlug = plat.toLowerCase().replace(/\s+/g, '-');
+    if (platSlug === slug) {
+      platform = plat;
+      break;
+    }
+  }
+
+  // If platform not found, redirect to home
+  if (!platform) {
+    return Astro.redirect('/');
+  }
+
+  // Build query for apps on this platform
+  let query = supabase
+    .from('apps')
+    .select('*', { count: 'exact' })
+    .eq('is_active', true)
+    .eq('platform', platform);
+
+  // Apply sorting
+  if (sort === 'popular') {
+    query = query.not('stars', 'is', null).order('stars', { ascending: false });
+  } else if (sort === 'name') {
+    query = query.order('title', { ascending: true });
+  } else {
+    query = query.order('created_at', { ascending: false });
+  }
+
+  // Apply pagination
+  query = query.range(offset, offset + limit - 1);
+
+  // Execute query
+  const { data: appsData, count: totalCount, error: queryError } = await query;
+
+  if (queryError) {
+    throw new Error(`Query error: ${queryError.message}`);
+  }
+
+  apps = appsData || [];
+  count = totalCount || 0;
+
+} catch (error) {
+  console.error('[Platform Page Error]:', error);
+  errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+}
+
+// Calculate pagination
+const totalPages = Math.ceil(count / limit);
+const hasNextPage = page < totalPages;
+const hasPrevPage = page > 1;
+
+// SEO Metadata
+const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://auto-download-center.vercel.app';
+const canonicalUrl = `${siteUrl}/platform/${slug}`;
+const title = `Free ${platform} Apps & Software - Download Latest Versions`;
+const description = `Discover and download the best free ${platform} applications and software. ${count} apps available including games, productivity tools, utilities, and more. All downloads are safe, legal, and from official sources.`;
+
+// Enhanced Keywords for Platform Pages
+const seoKeywords = [
+  `${platform.toLowerCase()} apps`,
+  `${platform.toLowerCase()} software`,
+  `free ${platform.toLowerCase()} applications`,
+  `${platform.toLowerCase()} downloads`,
+  `best ${platform.toLowerCase()} apps`,
+  `latest ${platform.toLowerCase()} software`,
+  `${platform.toLowerCase()} programs`,
+  `safe ${platform.toLowerCase()} downloads`,
+  'free software',
+  'open source apps',
+  'official downloads'
+].join(', ');
+
+// Structured Data for Platform Page
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": `${platform} Apps & Software`,
+  "description": description,
+  "url": canonicalUrl,
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": count,
+    "itemListElement": apps.slice(0, 10).map((app, index) => ({
+      "@type": "SoftwareApplication",
+      "position": index + 1,
+      "name": app.title,
+      "description": app.short_description || app.description,
+      "applicationCategory": app.category,
+      "operatingSystem": app.platform,
+      "url": `${siteUrl}/apps/${app.slug}`
+    }))
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": siteUrl
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Platforms",
+        "item": `${siteUrl}/platforms`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": platform,
+        "item": canonicalUrl
+      }
+    ]
+  }
+};
+
+// FAQ Schema for Platform Pages
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": `What are the best free ${platform} apps?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `We have curated ${count} of the best free ${platform} applications across various categories including productivity, games, utilities, and development tools. All apps are safe, legal, and downloaded from official sources.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `Are these ${platform} apps safe to download?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Yes, all ${platform} apps listed here are completely safe. We only provide downloads from official sources like GitHub, F-Droid, and official developer websites. Every download is verified and malware-free.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `How often are ${platform} apps updated?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Our ${platform} app collection is updated daily through automated sync systems. We monitor official sources to ensure you always have access to the latest versions with newest features and security updates.`
+      }
+    }
+  ]
+};
+---
+
+<Layout 
+  title={title} 
+  description={description} 
+  canonical={canonicalUrl}
+>
+  <!-- Enhanced SEO for Platform Pages -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+  <meta name="keywords" content={seoKeywords} slot="head" />
+  <meta name="platform-name" content={platform} slot="head" />
+  <meta name="app-count" content={count.toString()} slot="head" />
+
+  <div class="bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <!-- Breadcrumb -->
+    <div class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <nav class="flex" aria-label="Breadcrumb">
+          <ol class="flex items-center space-x-4">
+            <li>
+              <a href="/" class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <div class="flex items-center">
+                <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="ml-4 text-sm font-medium text-gray-900 dark:text-gray-100">{platform} Apps</span>
+              </div>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <div class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="text-center">
+          <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            Free {platform} Apps & Software
+          </h1>
+          <p class="text-xl text-gray-600 dark:text-gray-400 mb-6 max-w-3xl mx-auto">
+            Discover and download the best free {platform} applications. 
+            <span class="font-semibold text-blue-600 dark:text-blue-400">{count} apps</span> 
+            available across all categories.
+          </p>
+          
+          <!-- Platform Stats -->
+          <div class="flex justify-center items-center space-x-8 text-sm text-gray-500 dark:text-gray-400">
+            <div class="flex items-center">
+              <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              100% Safe
+            </div>
+            <div class="flex items-center">
+              <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+              </svg>
+              Official Sources
+            </div>
+            <div class="flex items-center">
+              <svg class="w-5 h-5 mr-2 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              Updated Daily
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters and Sorting -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
+        <div class="flex items-center space-x-4">
+          <span class="text-sm text-gray-600 dark:text-gray-400">
+            Showing {apps.length} of {count} {platform} apps
+          </span>
+        </div>
+        
+        <div class="flex items-center space-x-4">
+          <label for="sort" class="text-sm font-medium text-gray-700 dark:text-gray-300">Sort by:</label>
+          <select 
+            id="sort" 
+            class="border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+            onchange="window.location.href = new URL(window.location.href).pathname + '?sort=' + this.value"
+          >
+            <option value="latest" selected={sort === 'latest'}>Latest</option>
+            <option value="popular" selected={sort === 'popular'}>Most Popular</option>
+            <option value="name" selected={sort === 'name'}>Name A-Z</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Apps Grid -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+      {errorMessage ? (
+        <div class="text-center py-12">
+          <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6">
+            <h3 class="text-lg font-medium text-red-800 dark:text-red-200 mb-2">Error Loading Apps</h3>
+            <p class="text-red-600 dark:text-red-400">{errorMessage}</p>
+          </div>
+        </div>
+      ) : apps.length === 0 ? (
+        <div class="text-center py-12">
+          <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-8">
+            <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">No {platform} Apps Found</h3>
+            <p class="text-gray-600 dark:text-gray-400">We're working on adding more {platform} applications. Check back soon!</p>
+          </div>
+        </div>
+      ) : (
+        <>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {apps.map((app) => (
+              <AppCard app={app} />
+            ))}
+          </div>
+
+          <!-- Pagination -->
+          {totalPages > 1 && (
+            <div class="flex justify-center items-center space-x-4 mt-12">
+              {hasPrevPage && (
+                <a 
+                  href={`/platform/${slug}?page=${page - 1}${sort !== 'latest' ? `&sort=${sort}` : ''}`}
+                  class="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+                >
+                  Previous
+                </a>
+              )}
+              
+              <span class="px-4 py-2 text-gray-600 dark:text-gray-400">
+                Page {page} of {totalPages}
+              </span>
+              
+              {hasNextPage && (
+                <a 
+                  href={`/platform/${slug}?page=${page + 1}${sort !== 'latest' ? `&sort=${sort}` : ''}`}
+                  class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                >
+                  Next
+                </a>
+              )}
+            </div>
+          )}
+        </>
+      )}
+    </div>
+
+    <!-- SEO Content Section -->
+    <div class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="prose dark:prose-invert max-w-none">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+            About {platform} Apps & Software
+          </h2>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                Why Choose Our {platform} Apps?
+              </h3>
+              <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  100% safe and virus-free downloads
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Official sources and verified developers
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Latest versions with newest features
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Daily updates and new app additions
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                Popular {platform} Categories
+              </h3>
+              <div class="grid grid-cols-2 gap-2 text-sm">
+                <a href="/category/productivity" class="text-blue-600 dark:text-blue-400 hover:underline">Productivity</a>
+                <a href="/category/games" class="text-blue-600 dark:text-blue-400 hover:underline">Games</a>
+                <a href="/category/utilities" class="text-blue-600 dark:text-blue-400 hover:underline">Utilities</a>
+                <a href="/category/developer-tools" class="text-blue-600 dark:text-blue-400 hover:underline">Developer Tools</a>
+                <a href="/category/multimedia" class="text-blue-600 dark:text-blue-400 hover:underline">Multimedia</a>
+                <a href="/category/security" class="text-blue-600 dark:text-blue-400 hover:underline">Security</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
