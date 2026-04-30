@@ -9,11 +9,26 @@ const BATCH_SIZE = 30; // Process 30 apps per batch (safe for Vercel timeout)
 const QUERIES_PER_BATCH = 3; // Process 3 queries per batch
 
 export const GET: APIRoute = async ({ request }) => {
+  const executionStartTime = Date.now();
+  const triggeredBy = request.headers.get('x-vercel-cron') ? 'cron' : 'manual';
+  
+  // Log execution attempt
+  console.log(`🔔 Cron execution triggered by: ${triggeredBy}`);
+  console.log(`🕐 Execution time: ${new Date().toISOString()}`);
+  
   // Verify cron secret for security
   const authHeader = request.headers.get('authorization');
   const cronSecret = import.meta.env.CRON_SECRET || 'default-secret';
   
   if (authHeader !== `Bearer ${cronSecret}`) {
+    // Log unauthorized attempt
+    await supabase.from('cron_logs').insert({
+      endpoint: '/api/sync-batch',
+      status: 'unauthorized',
+      triggered_by: triggeredBy,
+      error_message: 'Invalid or missing authorization header'
+    });
+    
     return new Response(JSON.stringify({ error: 'Unauthorized' }), {
       status: 401,
       headers: { 'Content-Type': 'application/json' }
@@ -205,9 +220,25 @@ export const GET: APIRoute = async ({ request }) => {
     console.log(`✅ Batch ${results.batch} completed in ${(results.duration / 1000).toFixed(2)}s`);
     console.log(`   Processed: ${results.processed}, Inserted: ${results.inserted}, Updated: ${results.updated}, Skipped: ${results.skipped}, Failed: ${results.failed}`);
 
+    // Log successful execution
+    await supabase.from('cron_logs').insert({
+      endpoint: '/api/sync-batch',
+      status: 'success',
+      batch_number: results.batch,
+      duration_ms: results.duration,
+      processed: results.processed,
+      inserted: results.inserted,
+      updated: results.updated,
+      skipped: results.skipped,
+      failed: results.failed,
+      triggered_by: triggeredBy
+    });
+
     return new Response(JSON.stringify({
       success: true,
-      results
+      results,
+      triggeredBy,
+      executionTime: new Date().toISOString()
     }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' }
@@ -216,19 +247,32 @@ export const GET: APIRoute = async ({ request }) => {
   } catch (error) {
     console.error('❌ Batch sync failed:', error);
     
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    
     // Mark as failed
     await supabase
       .from('sync_progress')
       .update({
         status: 'failed',
-        error_message: error instanceof Error ? error.message : 'Unknown error',
+        error_message: errorMessage,
         updated_at: new Date().toISOString()
       })
       .eq('id', 1);
     
+    // Log failed execution
+    await supabase.from('cron_logs').insert({
+      endpoint: '/api/sync-batch',
+      status: 'failed',
+      duration_ms: Date.now() - executionStartTime,
+      error_message: errorMessage,
+      triggered_by: triggeredBy
+    });
+    
     return new Response(JSON.stringify({
       success: false,
-      error: error instanceof Error ? error.message : 'Unknown error'
+      error: errorMessage,
+      triggeredBy,
+      executionTime: new Date().toISOString()
     }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }
