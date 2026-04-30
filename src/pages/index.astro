@@ -70,6 +70,53 @@ const categoryIcons: Record<string, string> = {
   description={pageDescription}
   canonical={siteUrl}
 >
+  <!-- FAQ Structured Data for Featured Snippets -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Are all downloads completely safe and virus-free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, absolutely! We only index software from official sources like GitHub, F-Droid, and verified developer websites. Every download link points directly to the original source, ensuring you get authentic, unmodified software. We never host files ourselves or modify any downloads."
+        }
+      },
+      {
+        "@type": "Question", 
+        "name": "How often do you update the software listings?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our automated sync system updates the software database daily. We monitor official repositories and sources to ensure you always have access to the latest versions with newest features and security updates. Recently updated apps are marked with a 'Recently Updated' badge."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What types of software can I find here?", 
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We offer a wide range of free and open-source software including Android apps, Windows software, developer tools, productivity applications, games, utilities, and more. All software is categorized for easy browsing and comes with detailed information about versions, licenses, and developers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to create an account to download software?",
+        "acceptedAnswer": {
+          "@type": "Answer", 
+          "text": "No account required! All downloads are completely free and anonymous. Simply browse our catalog, find the software you need, and click the download button. You'll be redirected to the official source where you can download the software directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you ensure software quality and authenticity?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We only index software from trusted sources like official GitHub repositories, F-Droid (for Android apps), and verified developer websites. Each app listing includes information about the original source, developer, license, and last update date. We never modify or repackage any software."
+        }
+      }
+    ]
+  })} slot="head" />
   <!-- Hero Section - Premium Design -->
   <section class="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 py-24 md:py-32 overflow-hidden">
     <!-- Animated Background -->

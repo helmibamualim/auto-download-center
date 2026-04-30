@@ -61,11 +61,15 @@ export const GET: APIRoute = async () => {
   </url>`).join('\n') || ''}
 </urlset>`;
 
+    // Auto-ping Google (silent fail if error)
+    const pingUrl = `https://www.google.com/ping?sitemap=${encodeURIComponent(siteUrl + '/sitemap.xml')}`;
+    fetch(pingUrl).catch(() => {}); // Silent fail - don't break sitemap if ping fails
+
     return new Response(sitemap, {
       status: 200,
       headers: {
         'Content-Type': 'application/xml; charset=utf-8',
-        'Cache-Control': 'public, max-age=3600', // Cache for 1 hour
+        'Cache-Control': 'public, max-age=1800', // Cache for 30 minutes (faster refresh)
       }
     });
   } catch (error) {
