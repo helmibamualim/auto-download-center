@@ -4,6 +4,11 @@ import SearchBar from '../components/SearchBar.astro';
 import AppCard from '../components/AppCard.astro';
 import { supabase } from '../lib/supabase';
 
+// SEO Configuration
+const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://auto-download-center.vercel.app';
+const pageTitle = "Auto Download Center - Safe, Free & Open Source Software Downloads";
+const pageDescription = "Discover and download thousands of free, safe, and open-source software, apps, and tools. All downloads from trusted official sources. Updated daily with the latest versions.";
+
 // Get latest apps
 const { data: latestApps } = await supabase
   .from('apps')
@@ -60,7 +65,11 @@ const categoryIcons: Record<string, string> = {
 };
 ---
 
-<Layout title="Auto Download Monetized Center - Safe, Free & Open Source Downloads">
+<Layout 
+  title={pageTitle}
+  description={pageDescription}
+  canonical={siteUrl}
+>
   <!-- Hero Section - Premium Design -->
   <section class="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 py-24 md:py-32 overflow-hidden">
     <!-- Animated Background -->

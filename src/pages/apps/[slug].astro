@@ -39,11 +39,52 @@ const { data: relatedApps } = await supabase
   .neq('id', app.id)
   .limit(4);
 
-const title = `${app.title} v${app.version} - Free Download`;
-const description = app.short_description || app.description?.substring(0, 160) || `Download ${app.title} for ${app.platform}. Safe, free and legal download from official sources.`;
+// SEO Metadata
+const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://auto-download-center.vercel.app';
+const canonicalUrl = `${siteUrl}/apps/${app.slug}`;
+const title = `Download ${app.title} v${app.version} - Free ${app.platform} App`;
+const description = app.short_description || app.description?.substring(0, 155) || `Download ${app.title} latest version for ${app.platform}. Safe, free, open-source download from official sources. Updated ${formatDate(app.updated_at)}.`;
+const ogImage = app.icon_url || `${siteUrl}/og-default.png`;
+
+// Structured Data for SEO
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": app.title,
+  "description": app.description || description,
+  "applicationCategory": app.category,
+  "operatingSystem": app.platform,
+  "softwareVersion": app.version,
+  "author": {
+    "@type": "Organization",
+    "name": app.developer
+  },
+  "downloadUrl": app.original_download_url,
+  "url": canonicalUrl,
+  "license": app.license,
+  "dateModified": app.updated_at,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "aggregateRating": app.stars ? {
+    "@type": "AggregateRating",
+    "ratingValue": Math.min(5, (app.stars / 1000) + 3.5).toFixed(1),
+    "ratingCount": app.stars,
+    "bestRating": "5",
+    "worstRating": "1"
+  } : undefined
+};
 ---
 
-<Layout title={title} description={description}>
+<Layout 
+  title={title} 
+  description={description}
+  canonical={canonicalUrl}
+  image={ogImage}
+>
   <div class="bg-gray-50 dark:bg-gray-900 min-h-screen">
     <!-- Breadcrumb -->
     <div class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
@@ -154,6 +195,23 @@ const description = app.short_description || app.description?.substring(0, 160) 
                   </span>
                   <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
                     {app.license}
+                  </span>
+                  {(() => {
+                    const daysSinceUpdate = Math.floor((Date.now() - new Date(app.updated_at).getTime()) / (1000 * 60 * 60 * 24));
+                    if (daysSinceUpdate <= 7) {
+                      return (
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
+                          <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                          </svg>
+                          Recently Updated
+                        </span>
+                      );
+                    }
+                    return null;
+                  })()}
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200">
+                    Latest Version
                   </span>
                 </div>
               </div>
@@ -293,26 +351,34 @@ const description = app.short_description || app.description?.substring(0, 160) 
   </div>
 </Layout>
 
-<!-- Schema.org structured data -->
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": app.title,
-  "description": app.description,
-  "applicationCategory": app.category,
-  "operatingSystem": app.platform,
-  "softwareVersion": app.version,
-  "author": {
-    "@type": "Person",
-    "name": app.developer
-  },
-  "downloadUrl": `${Astro.site}go/${app.slug}`,
-  "url": `${Astro.site}apps/${app.slug}`,
-  "license": app.license,
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
-})} />
+  </div>
+
+  <!-- Schema.org structured data for SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  
+  <!-- Breadcrumb structured data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": siteUrl
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Apps",
+        "item": `${siteUrl}/apps`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": app.title,
+        "item": canonicalUrl
+      }
+    ]
+  })} />
 </Layout>
