@@ -1,101 +1,1348 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// SEO Configuration
+const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://auto-download-center.vercel.app';
+const pageTitle = "Privacy Policy - Auto Download Center | Data Protection & User Privacy";
+const pageDescription = "Comprehensive privacy policy for Auto Download Center. Learn how we protect your data, handle cookies, and respect your privacy rights. GDPR compliant and transparent data practices.";
+const lastUpdated = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+// Privacy Policy Structured Data
+const privacyPolicyStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Privacy Policy",
+  "description": pageDescription,
+  "url": `${siteUrl}/privacy-policy`,
+  "dateModified": new Date().toISOString(),
+  "publisher": {
+    "@type": "Organization",
+    "name": "Auto Download Center",
+    "url": siteUrl
+  },
+  "mainEntity": {
+    "@type": "PrivacyPolicy",
+    "name": "Auto Download Center Privacy Policy",
+    "datePublished": "2026-01-01",
+    "dateModified": new Date().toISOString(),
+    "publisher": {
+      "@type": "Organization", 
+      "name": "Auto Download Center"
+    }
+  }
+};
 ---
 
 <Layout 
-  title="Privacy Policy - Auto Download Monetized Center"
-  description="Learn how we protect your privacy and handle your data at Auto Download Monetized Center."
+  title={pageTitle}
+  description={pageDescription}
+  canonical={`${siteUrl}/privacy-policy`}
 >
-  <div class="bg-gray-50 dark:bg-gray-900 min-h-screen">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-8">
-        <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">
+  <!-- Privacy Policy Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(privacyPolicyStructuredData)} />
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 py-20 overflow-hidden">
+    <!-- Animated Background -->
+    <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
+    <div class="absolute top-0 right-1/4 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-4xl mx-auto">
+        <!-- Badge -->
+        <div class="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium mb-6 backdrop-blur-sm">
+          <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
+          GDPR Compliant & Transparent
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-100 mb-6 leading-tight">
           Privacy Policy
         </h1>
         
-        <div class="prose dark:prose-invert max-w-none">
-          <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
-            Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-          </p>
+        <!-- Subtitle -->
+        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Your privacy matters to us. Learn how we protect your data and respect your rights.
+        </p>
 
-          <h2>Information We Collect</h2>
-          <p>
-            Auto Download Monetized Center is committed to protecting your privacy. We collect minimal information necessary to provide our services:
-          </p>
-          <ul>
-            <li><strong>Usage Data:</strong> We collect anonymous usage statistics to improve our service</li>
-            <li><strong>Download Analytics:</strong> We track download counts for statistical purposes</li>
-            <li><strong>Technical Data:</strong> Basic technical information like IP address, browser type, and device information</li>
-          </ul>
-
-          <h2>How We Use Your Information</h2>
-          <p>We use the collected information to:</p>
-          <ul>
-            <li>Provide and maintain our download service</li>
-            <li>Improve user experience and website functionality</li>
-            <li>Generate anonymous usage statistics</li>
-            <li>Ensure security and prevent abuse</li>
-          </ul>
-
-          <h2>Third-Party Services</h2>
-          <p>
-            Our website uses third-party services that may collect information:
-          </p>
-          <ul>
-            <li><strong>SafelinkU:</strong> For monetized download links (subject to their privacy policy)</li>
-            <li><strong>Vercel:</strong> For website hosting and analytics</li>
-            <li><strong>Supabase:</strong> For database services</li>
-          </ul>
-
-          <h2>Data Storage and Security</h2>
-          <p>
-            We implement appropriate security measures to protect your information:
-          </p>
-          <ul>
-            <li>Data is stored securely using industry-standard encryption</li>
-            <li>We do not store personal information unless necessary</li>
-            <li>Regular security audits and updates</li>
-          </ul>
-
-          <h2>Cookies and Tracking</h2>
-          <p>
-            We use minimal cookies for:
-          </p>
-          <ul>
-            <li>Theme preferences (dark/light mode)</li>
-            <li>Basic analytics (anonymous)</li>
-            <li>Security and fraud prevention</li>
-          </ul>
-
-          <h2>Your Rights</h2>
-          <p>You have the right to:</p>
-          <ul>
-            <li>Access information we have about you</li>
-            <li>Request correction of inaccurate data</li>
-            <li>Request deletion of your data</li>
-            <li>Opt-out of data collection where possible</li>
-          </ul>
-
-          <h2>Children's Privacy</h2>
-          <p>
-            Our service is not directed to children under 13. We do not knowingly collect personal information from children under 13.
-          </p>
-
-          <h2>Changes to This Policy</h2>
-          <p>
-            We may update this privacy policy from time to time. We will notify users of any material changes by posting the new policy on this page.
-          </p>
-
-          <h2>Contact Us</h2>
-          <p>
-            If you have any questions about this Privacy Policy, please contact us at:
-          </p>
-          <ul>
-            <li>Email: <a href="mailto:privacy@autodownloadcenter.com" class="text-blue-600 dark:text-blue-400">privacy@autodownloadcenter.com</a></li>
-            <li>Contact Form: <a href="/contact" class="text-blue-600 dark:text-blue-400">Contact Page</a></li>
-          </ul>
+        <!-- Last Updated -->
+        <div class="inline-flex items-center px-6 py-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-700/50">
+          <svg class="w-5 h-5 text-gray-500 dark:text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+          </svg>
+          <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Last updated: {lastUpdated}</span>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Table of Contents -->
+  <section class="py-12 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-3xl p-8 shadow-lg border border-gray-200 dark:border-gray-600">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 flex items-center">
+          <svg class="w-6 h-6 mr-3 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+          </svg>
+          Table of Contents
+        </h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="space-y-2">
+            <a href="#overview" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-blue-600 dark:text-blue-400 font-medium group-hover:text-blue-700 dark:group-hover:text-blue-300">1. Overview & Commitment</span>
+            </a>
+            <a href="#information-collection" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-blue-600 dark:text-blue-400 font-medium group-hover:text-blue-700 dark:group-hover:text-blue-300">2. Information We Collect</span>
+            </a>
+            <a href="#data-usage" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-blue-600 dark:text-blue-400 font-medium group-hover:text-blue-700 dark:group-hover:text-blue-300">3. How We Use Your Data</span>
+            </a>
+            <a href="#cookies-tracking" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-blue-600 dark:text-blue-400 font-medium group-hover:text-blue-700 dark:group-hover:text-blue-300">4. Cookies & Tracking</span>
+            </a>
+            <a href="#third-party" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-blue-600 dark:text-blue-400 font-medium group-hover:text-blue-700 dark:group-hover:text-blue-300">5. Third-Party Services</span>
+            </a>
+          </div>
+          <div class="space-y-2">
+            <a href="#data-security" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-blue-600 dark:text-blue-400 font-medium group-hover:text-blue-700 dark:group-hover:text-blue-300">6. Data Security & Storage</span>
+            </a>
+            <a href="#user-rights" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-blue-600 dark:text-blue-400 font-medium group-hover:text-blue-700 dark:group-hover:text-blue-300">7. Your Rights (GDPR)</span>
+            </a>
+            <a href="#children-privacy" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-blue-600 dark:text-blue-400 font-medium group-hover:text-blue-700 dark:group-hover:text-blue-300">8. Children's Privacy</span>
+            </a>
+            <a href="#policy-updates" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-blue-600 dark:text-blue-400 font-medium group-hover:text-blue-700 dark:group-hover:text-blue-300">9. Policy Updates</span>
+            </a>
+            <a href="#contact" class="block p-3 rounded-xl hover:bg-white/50 dark:hover:bg-gray-600/50 transition-colors group">
+              <span class="text-blue-600 dark:text-blue-400 font-medium group-hover:text-blue-700 dark:group-hover:text-blue-300">10. Contact Information</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="py-20 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- 1. Overview & Commitment -->
+      <div id="overview" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">1</span>
+          </div>
+          <div>
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Overview & Our Commitment</h2>
+            <div class="prose dark:prose-invert max-w-none">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                At Auto Download Center, we are committed to protecting your privacy and being transparent about how we handle your data. 
+                This Privacy Policy explains what information we collect, how we use it, and your rights regarding your personal data.
+              </p>
+              
+              <!-- Key Principles -->
+              <div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 mb-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-6 h-6 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  Our Core Privacy Principles
+                </h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div class="flex items-start">
+                    <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">Minimal Data Collection:</strong>
+                      <span class="text-gray-600 dark:text-gray-400"> We only collect data necessary for our service</span>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">Transparency:</strong>
+                      <span class="text-gray-600 dark:text-gray-400"> Clear communication about data practices</span>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <div class="w-2 h-2 bg-pink-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">User Control:</strong>
+                      <span class="text-gray-600 dark:text-gray-400"> You have control over your data and privacy settings</span>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <div class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">Security First:</strong>
+                      <span class="text-gray-600 dark:text-gray-400"> Industry-standard security measures</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                This policy applies to all users of Auto Download Center and covers all data processing activities 
+                related to our website and services. By using our platform, you agree to the practices described in this policy.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Information We Collect -->
+      <div id="information-collection" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">2</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Information We Collect</h2>
+            
+            <div class="space-y-8">
+              <!-- Automatically Collected Information -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                  </svg>
+                  Automatically Collected Information
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Technical Data</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• IP address (anonymized for analytics)</li>
+                      <li>• Browser type and version</li>
+                      <li>• Operating system</li>
+                      <li>• Device type and screen resolution</li>
+                      <li>• Referrer URL</li>
+                      <li>• Pages visited and time spent</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Usage Analytics</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Download statistics (anonymous)</li>
+                      <li>• Search queries (no personal data)</li>
+                      <li>• Popular apps and categories</li>
+                      <li>• User interaction patterns</li>
+                      <li>• Performance metrics</li>
+                      <li>• Error logs (anonymized)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- User Preferences -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                  User Preferences & Settings
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                  We store minimal preference data locally in your browser to enhance your experience:
+                </p>
+                <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                  <li class="flex items-start">
+                    <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div><strong>Theme Preference:</strong> Dark/light mode selection (stored locally)</div>
+                  </li>
+                  <li class="flex items-start">
+                    <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div><strong>Download History:</strong> Recent downloads (stored locally, max 50 entries)</div>
+                  </li>
+                  <li class="flex items-start">
+                    <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div><strong>Search History:</strong> Recent searches (stored locally, optional)</div>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Information We DON'T Collect -->
+              <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl p-6 border border-green-200 dark:border-green-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  What We DON'T Collect
+                </h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>✗ Personal identification information</li>
+                    <li>✗ Email addresses (unless you contact us)</li>
+                    <li>✗ Phone numbers or addresses</li>
+                    <li>✗ Financial or payment information</li>
+                  </ul>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>✗ Social media profiles</li>
+                    <li>✗ Biometric data</li>
+                    <li>✗ Location tracking</li>
+                    <li>✗ Cross-site tracking</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. How We Use Your Data -->
+      <div id="data-usage" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">3</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">How We Use Your Data</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                We use the collected information solely to provide and improve our services. Here's exactly how:
+              </p>
+
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-pink-600 dark:text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                    Service Operations
+                  </h3>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• Provide download links and app information</li>
+                    <li>• Maintain website functionality</li>
+                    <li>• Process search queries</li>
+                    <li>• Generate app recommendations</li>
+                    <li>• Monitor service performance</li>
+                  </ul>
+                </div>
+
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-pink-600 dark:text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    Improvements & Analytics
+                  </h3>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• Analyze usage patterns (anonymized)</li>
+                    <li>• Improve user experience</li>
+                    <li>• Optimize website performance</li>
+                    <li>• Identify popular content</li>
+                    <li>• Fix bugs and technical issues</li>
+                  </ul>
+                </div>
+
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-pink-600 dark:text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                    Security & Safety
+                  </h3>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• Prevent abuse and spam</li>
+                    <li>• Detect suspicious activity</li>
+                    <li>• Protect against malicious downloads</li>
+                    <li>• Ensure service availability</li>
+                    <li>• Comply with legal requirements</li>
+                  </ul>
+                </div>
+
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-pink-600 dark:text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                    </svg>
+                    Communication
+                  </h3>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• Respond to user inquiries</li>
+                    <li>• Send important service updates</li>
+                    <li>• Provide technical support</li>
+                    <li>• Handle DMCA requests</li>
+                    <li>• Process legal requests</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Legal Basis -->
+              <div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 border border-blue-200 dark:border-blue-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16l3-1m-3 1l-3-1"></path>
+                  </svg>
+                  Legal Basis for Processing (GDPR)
+                </h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <strong class="text-gray-900 dark:text-gray-100">Legitimate Interest:</strong>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                      Operating our service, improving user experience, and ensuring security
+                    </p>
+                  </div>
+                  <div>
+                    <strong class="text-gray-900 dark:text-gray-100">Consent:</strong>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                      Optional features like analytics cookies (where applicable)
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Cookies & Tracking -->
+      <div id="cookies-tracking" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">4</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Cookies & Tracking</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                We use minimal cookies and tracking technologies to enhance your experience. Here's what we use and why:
+              </p>
+
+              <!-- Essential Cookies -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  Essential Cookies (Always Active)
+                </h3>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-sm">
+                    <thead>
+                      <tr class="border-b border-gray-200 dark:border-gray-600">
+                        <th class="text-left py-2 text-gray-900 dark:text-gray-100">Cookie Name</th>
+                        <th class="text-left py-2 text-gray-900 dark:text-gray-100">Purpose</th>
+                        <th class="text-left py-2 text-gray-900 dark:text-gray-100">Duration</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-gray-600 dark:text-gray-400">
+                      <tr class="border-b border-gray-100 dark:border-gray-700">
+                        <td class="py-2 font-mono">theme</td>
+                        <td class="py-2">Store dark/light mode preference</td>
+                        <td class="py-2">Persistent</td>
+                      </tr>
+                      <tr class="border-b border-gray-100 dark:border-gray-700">
+                        <td class="py-2 font-mono">download_history</td>
+                        <td class="py-2">Local download tracking (max 50 entries)</td>
+                        <td class="py-2">Persistent</td>
+                      </tr>
+                      <tr>
+                        <td class="py-2 font-mono">session_id</td>
+                        <td class="py-2">Basic session management</td>
+                        <td class="py-2">Session only</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Analytics Cookies -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                  </svg>
+                  Analytics & Performance (Anonymous)
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                  We use anonymous analytics to understand how users interact with our site:
+                </p>
+                <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                  <li class="flex items-start">
+                    <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div><strong>Vercel Analytics:</strong> Anonymous page views and performance metrics</div>
+                  </li>
+                  <li class="flex items-start">
+                    <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div><strong>Download Tracking:</strong> Anonymous download statistics for popular apps</div>
+                  </li>
+                  <li class="flex items-start">
+                    <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div><strong>Error Monitoring:</strong> Anonymous error reports to improve stability</div>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Cookie Control -->
+              <div class="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-6 border border-purple-200 dark:border-purple-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                  Managing Your Cookie Preferences
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                  You have full control over cookies and tracking:
+                </p>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <strong class="text-gray-900 dark:text-gray-100">Browser Settings:</strong>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                      Configure cookie preferences in your browser settings
+                    </p>
+                  </div>
+                  <div>
+                    <strong class="text-gray-900 dark:text-gray-100">Local Storage:</strong>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                      Clear browser data to remove all stored preferences
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Third-Party Services -->
+      <div id="third-party" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">5</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Third-Party Services</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                We work with trusted third-party services to provide our platform. Each service has its own privacy policy:
+              </p>
+
+              <div class="grid gap-6">
+                <!-- Vercel -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                  <div class="flex items-start justify-between mb-4">
+                    <div>
+                      <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-orange-600 dark:text-orange-400" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M24 22.525H0l12-21.05 12 21.05z"></path>
+                        </svg>
+                        Vercel (Hosting & Analytics)
+                      </h3>
+                      <p class="text-gray-600 dark:text-gray-400 mt-2">
+                        Provides website hosting, CDN, and anonymous analytics
+                      </p>
+                    </div>
+                    <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" 
+                       class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 text-sm font-medium">
+                      Privacy Policy ↗
+                    </a>
+                  </div>
+                  <div class="grid md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">Data Collected:</strong>
+                      <ul class="text-gray-600 dark:text-gray-400 mt-1 space-y-1">
+                        <li>• Anonymous page views</li>
+                        <li>• Performance metrics</li>
+                        <li>• Geographic regions (country-level)</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">Purpose:</strong>
+                      <ul class="text-gray-600 dark:text-gray-400 mt-1 space-y-1">
+                        <li>• Website hosting and delivery</li>
+                        <li>• Performance optimization</li>
+                        <li>• Anonymous usage analytics</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Supabase -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                  <div class="flex items-start justify-between mb-4">
+                    <div>
+                      <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M21.362 9.354H12V.396a.396.396 0 0 0-.716-.233L2.203 12.424l-.401.562a1.04 1.04 0 0 0 0 1.028l.401.562 9.081 12.261a.396.396 0 0 0 .716-.233V17.646h9.362a.396.396 0 0 0 .396-.396V9.75a.396.396 0 0 0-.396-.396z"></path>
+                        </svg>
+                        Supabase (Database)
+                      </h3>
+                      <p class="text-gray-600 dark:text-gray-400 mt-2">
+                        Secure database hosting for app information and metadata
+                      </p>
+                    </div>
+                    <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer" 
+                       class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 text-sm font-medium">
+                      Privacy Policy ↗
+                    </a>
+                  </div>
+                  <div class="grid md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">Data Stored:</strong>
+                      <ul class="text-gray-600 dark:text-gray-400 mt-1 space-y-1">
+                        <li>• App metadata and descriptions</li>
+                        <li>• Download links and versions</li>
+                        <li>• Anonymous usage statistics</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">Security:</strong>
+                      <ul class="text-gray-600 dark:text-gray-400 mt-1 space-y-1">
+                        <li>• End-to-end encryption</li>
+                        <li>• SOC 2 Type II compliant</li>
+                        <li>• Regular security audits</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SafelinkU -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                  <div class="flex items-start justify-between mb-4">
+                    <div>
+                      <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                        </svg>
+                        SafelinkU (Download Links)
+                      </h3>
+                      <p class="text-gray-600 dark:text-gray-400 mt-2">
+                        Monetization service for download links (when applicable)
+                      </p>
+                    </div>
+                    <a href="https://safelinku.com/privacy-policy" target="_blank" rel="noopener noreferrer" 
+                       class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 text-sm font-medium">
+                      Privacy Policy ↗
+                    </a>
+                  </div>
+                  <div class="grid md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">When Used:</strong>
+                      <ul class="text-gray-600 dark:text-gray-400 mt-1 space-y-1">
+                        <li>• Only for monetized download links</li>
+                        <li>• Clearly marked when active</li>
+                        <li>• Optional service</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">User Control:</strong>
+                      <ul class="text-gray-600 dark:text-gray-400 mt-1 space-y-1">
+                        <li>• Direct links also available</li>
+                        <li>• Subject to their privacy policy</li>
+                        <li>• User choice for each download</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Data Sharing Policy -->
+              <div class="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-red-200 dark:border-red-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                  </svg>
+                  Important: We Never Sell Your Data
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  We do not sell, rent, or trade any personal information to third parties. 
+                  Data is only shared with the services listed above for operational purposes, 
+                  and all sharing is governed by strict privacy agreements.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .bg-grid-pattern {
+    background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  @keyframes blob {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+  }
+
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Scroll offset for anchor links */
+  section[id] {
+    scroll-margin-top: 100px;
+  }
+</style>
+  <!-- 6. Data Security & Storage -->
+  <section class="py-20 bg-white dark:bg-gray-900">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div id="data-security" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">6</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Data Security & Storage</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                We implement industry-standard security measures to protect your data and ensure safe browsing:
+              </p>
+
+              <!-- Security Measures -->
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                    Technical Security
+                  </h3>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• HTTPS encryption for all connections</li>
+                    <li>• Secure database with encryption at rest</li>
+                    <li>• Regular security updates and patches</li>
+                    <li>• DDoS protection and rate limiting</li>
+                    <li>• Secure API endpoints</li>
+                    <li>• Content Security Policy (CSP)</li>
+                  </ul>
+                </div>
+
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                    </svg>
+                    Data Protection
+                  </h3>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• Minimal data collection principle</li>
+                    <li>• Anonymous analytics only</li>
+                    <li>• No personal data storage</li>
+                    <li>• Regular data audits</li>
+                    <li>• Secure backup procedures</li>
+                    <li>• Access controls and monitoring</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Data Retention -->
+              <div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 border border-blue-200 dark:border-blue-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  Data Retention Policy
+                </h3>
+                <div class="grid md:grid-cols-3 gap-4">
+                  <div>
+                    <strong class="text-gray-900 dark:text-gray-100">Analytics Data:</strong>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                      Retained for 12 months maximum, then automatically deleted
+                    </p>
+                  </div>
+                  <div>
+                    <strong class="text-gray-900 dark:text-gray-100">Error Logs:</strong>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                      Retained for 30 days for debugging, then purged
+                    </p>
+                  </div>
+                  <div>
+                    <strong class="text-gray-900 dark:text-gray-100">Local Storage:</strong>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                      Under your control, can be cleared anytime
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Incident Response -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                  </svg>
+                  Security Incident Response
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                  In the unlikely event of a security incident:
+                </p>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• Immediate containment and assessment</li>
+                    <li>• Notification within 72 hours (GDPR compliant)</li>
+                    <li>• Transparent communication with users</li>
+                  </ul>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• Cooperation with authorities if required</li>
+                    <li>• Post-incident security improvements</li>
+                    <li>• Regular security audits and updates</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Your Rights (GDPR) -->
+      <div id="user-rights" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">7</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Your Rights (GDPR Compliant)</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                Under GDPR and other privacy laws, you have comprehensive rights regarding your data. Here's what you can do:
+              </p>
+
+              <div class="grid gap-6">
+                <!-- Right to Access -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    Right to Access
+                  </h3>
+                  <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <p class="text-gray-600 dark:text-gray-400 mb-2">
+                        You can request information about what data we have about you.
+                      </p>
+                      <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                        <li>• What data we collect</li>
+                        <li>• How we use it</li>
+                        <li>• Who we share it with</li>
+                        <li>• How long we keep it</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">How to Request:</strong>
+                      <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                        Contact us at privacy@autodownloadcenter.com with your request. 
+                        We'll respond within 30 days.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Right to Rectification -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                    </svg>
+                    Right to Rectification
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400">
+                    You can request correction of inaccurate or incomplete data. Since we collect minimal data, 
+                    this mainly applies to any contact information you may have provided when reaching out to us.
+                  </p>
+                </div>
+
+                <!-- Right to Erasure -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                    </svg>
+                    Right to Erasure ("Right to be Forgotten")
+                  </h3>
+                  <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <p class="text-gray-600 dark:text-gray-400 mb-2">
+                        You can request deletion of your data in certain circumstances:
+                      </p>
+                      <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                        <li>• Data no longer necessary for original purpose</li>
+                        <li>• You withdraw consent</li>
+                        <li>• Data processed unlawfully</li>
+                        <li>• Legal obligation to delete</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <strong class="text-gray-900 dark:text-gray-100">Local Data:</strong>
+                      <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                        You can clear browser data anytime to remove locally stored preferences 
+                        and download history.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Additional Rights -->
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                      <svg class="w-5 h-5 mr-2 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728L5.636 5.636m12.728 12.728L18 21l-2.636-2.636M6 6l2.636 2.636"></path>
+                      </svg>
+                      Right to Restrict Processing
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                      You can request to limit how we process your data in certain situations, 
+                      such as when you contest the accuracy of the data.
+                    </p>
+                  </div>
+
+                  <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                      <svg class="w-5 h-5 mr-2 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                      </svg>
+                      Right to Data Portability
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                      You can request your data in a structured, machine-readable format 
+                      to transfer to another service.
+                    </p>
+                  </div>
+
+                  <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                      <svg class="w-5 h-5 mr-2 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                      </svg>
+                      Right to Object
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                      You can object to processing based on legitimate interests or for 
+                      direct marketing purposes.
+                    </p>
+                  </div>
+
+                  <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                      <svg class="w-5 h-5 mr-2 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                      </svg>
+                      Right to Lodge a Complaint
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                      You can file a complaint with your local data protection authority 
+                      if you believe we've violated your privacy rights.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- How to Exercise Rights -->
+              <div class="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-2xl p-6 border border-indigo-200 dark:border-indigo-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                  </svg>
+                  How to Exercise Your Rights
+                </h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <strong class="text-gray-900 dark:text-gray-100">Contact Methods:</strong>
+                    <ul class="text-gray-600 dark:text-gray-400 text-sm mt-2 space-y-1">
+                      <li>• Email: privacy@autodownloadcenter.com</li>
+                      <li>• Contact form on our website</li>
+                      <li>• Include "Privacy Request" in subject line</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <strong class="text-gray-900 dark:text-gray-100">Response Time:</strong>
+                    <ul class="text-gray-600 dark:text-gray-400 text-sm mt-2 space-y-1">
+                      <li>• We respond within 30 days</li>
+                      <li>• Complex requests may take up to 90 days</li>
+                      <li>• We'll keep you informed of progress</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 8. Children's Privacy -->
+  <section class="py-20 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div id="children-privacy" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">8</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Children's Privacy Protection</h2>
+            
+            <div class="space-y-6">
+              <div class="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-yellow-200 dark:border-yellow-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                  </svg>
+                  COPPA Compliance
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
+                  Our service is not directed to children under 13 years of age. We do not knowingly collect, 
+                  use, or disclose personal information from children under 13.
+                </p>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                    </svg>
+                    If We Discover Child Data
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400 mb-4">
+                    If we become aware that we have collected personal information from a child under 13:
+                  </p>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• We will delete the information immediately</li>
+                    <li>• We will not use the information for any purpose</li>
+                    <li>• We will not disclose it to third parties</li>
+                    <li>• We will take steps to prevent future collection</li>
+                  </ul>
+                </div>
+
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    Parental Guidance
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400 mb-4">
+                    We encourage parents and guardians to:
+                  </p>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• Monitor their children's internet activity</li>
+                    <li>• Teach children about online safety</li>
+                    <li>• Contact us if they believe their child has provided information</li>
+                    <li>• Use parental control software when appropriate</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 rounded-2xl p-6 border border-red-200 dark:border-red-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                  </svg>
+                  Report Child Data Collection
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  If you are a parent or guardian and believe your child has provided personal information to us, 
+                  please contact us immediately at <strong>privacy@autodownloadcenter.com</strong> with "Child Privacy Concern" 
+                  in the subject line. We will investigate and take appropriate action within 24 hours.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Policy Updates -->
+      <div id="policy-updates" class="bg-white dark:bg-gray-900 rounded-3xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">9</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Policy Updates & Changes</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                We may update this Privacy Policy from time to time to reflect changes in our practices, 
+                technology, legal requirements, or other factors.
+              </p>
+
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-teal-600 dark:text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zM4 19h6v-2H4v2zM16 3H4v2h12V3zM4 7h12v2H4V7zM4 11h12v2H4v-2z"></path>
+                    </svg>
+                    Types of Changes
+                  </h3>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li><strong>Minor Changes:</strong> Clarifications, formatting, contact information</li>
+                    <li><strong>Material Changes:</strong> New data collection, changed purposes, new third parties</li>
+                    <li><strong>Legal Updates:</strong> Compliance with new regulations</li>
+                  </ul>
+                </div>
+
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-teal-600 dark:text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-1.586l-4.707 4.707z"></path>
+                    </svg>
+                    How We Notify You
+                  </h3>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li><strong>Website Notice:</strong> Prominent notice on our homepage</li>
+                    <li><strong>Updated Date:</strong> "Last updated" date at the top of this policy</li>
+                    <li><strong>Email Notice:</strong> For material changes (if we have your email)</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="bg-gradient-to-r from-teal-50 to-blue-50 dark:from-teal-900/20 dark:to-blue-900/20 rounded-2xl p-6 border border-teal-200 dark:border-teal-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-teal-600 dark:text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  Effective Date & Your Continued Use
+                </h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-2">
+                      <strong>Effective Date:</strong> Changes become effective 30 days after posting, 
+                      unless a longer notice period is required by law.
+                    </p>
+                  </div>
+                  <div>
+                    <p class="text-gray-600 dark:text-gray-400">
+                      <strong>Continued Use:</strong> Your continued use of our service after changes 
+                      become effective constitutes acceptance of the updated policy.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-teal-600 dark:text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                  Version History
+                </h3>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-sm">
+                    <thead>
+                      <tr class="border-b border-gray-200 dark:border-gray-600">
+                        <th class="text-left py-2 text-gray-900 dark:text-gray-100">Version</th>
+                        <th class="text-left py-2 text-gray-900 dark:text-gray-100">Date</th>
+                        <th class="text-left py-2 text-gray-900 dark:text-gray-100">Changes</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-gray-600 dark:text-gray-400">
+                      <tr class="border-b border-gray-100 dark:border-gray-700">
+                        <td class="py-2 font-mono">v2.0</td>
+                        <td class="py-2">{lastUpdated}</td>
+                        <td class="py-2">Comprehensive update with GDPR compliance, enhanced security details</td>
+                      </tr>
+                      <tr>
+                        <td class="py-2 font-mono">v1.0</td>
+                        <td class="py-2">January 1, 2026</td>
+                        <td class="py-2">Initial privacy policy</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. Contact Information -->
+      <div id="contact" class="bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div class="flex items-start mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+            <span class="text-white font-bold text-lg">10</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Contact Information</h2>
+            
+            <div class="space-y-6">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, 
+                we're here to help. Please don't hesitate to reach out to us.
+              </p>
+
+              <div class="grid md:grid-cols-2 gap-6">
+                <!-- Privacy Officer -->
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-6 border border-purple-200 dark:border-purple-700">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                    Privacy Officer
+                  </h3>
+                  <div class="space-y-3">
+                    <div class="flex items-center">
+                      <svg class="w-4 h-4 mr-2 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                      </svg>
+                      <a href="mailto:privacy@autodownloadcenter.com" class="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium">
+                        privacy@autodownloadcenter.com
+                      </a>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                      For all privacy-related inquiries, data requests, and policy questions
+                    </p>
+                  </div>
+                </div>
+
+                <!-- General Contact -->
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-700">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                    </svg>
+                    General Support
+                  </h3>
+                  <div class="space-y-3">
+                    <div class="flex items-center">
+                      <svg class="w-4 h-4 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                      </svg>
+                      <a href="/contact" class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium">
+                        Contact Form
+                      </a>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                      For general questions, technical support, and feedback
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Response Times -->
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  Response Times & What to Include
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Expected Response Times</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Privacy requests: Within 30 days</li>
+                      <li>• General inquiries: Within 48 hours</li>
+                      <li>• Urgent security matters: Within 24 hours</li>
+                      <li>• Child privacy concerns: Within 24 hours</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Please Include in Your Message</h4>
+                    <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      <li>• Clear subject line describing your request</li>
+                      <li>• Detailed description of your concern</li>
+                      <li>• Any relevant dates or reference numbers</li>
+                      <li>• Preferred method of response</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Legal Information -->
+              <div class="bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 border border-gray-200 dark:border-gray-600">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                  Legal & Compliance Information
+                </h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <strong class="text-gray-900 dark:text-gray-100">Service Provider:</strong>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                      Auto Download Center<br>
+                      Online Software Directory Service
+                    </p>
+                  </div>
+                  <div>
+                    <strong class="text-gray-900 dark:text-gray-100">Compliance:</strong>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                      GDPR, COPPA, CCPA compliant<br>
+                      Regular privacy audits conducted
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="py-20 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+          Questions About Your Privacy?
+        </h2>
+        <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          We're committed to transparency and protecting your privacy. Don't hesitate to reach out with any questions or concerns.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a 
+            href="mailto:privacy@autodownloadcenter.com" 
+            class="inline-flex items-center px-8 py-4 bg-white hover:bg-gray-50 text-blue-600 font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            Contact Privacy Officer
+          </a>
+          <a 
+            href="/" 
+            class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white hover:bg-white/10 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+            Back to Homepage
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
