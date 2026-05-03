@@ -5,6 +5,10 @@ import Layout from '../layouts/Layout.astro';
 const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://auto-download-center.vercel.app';
 const pageTitle = "Support the Platform / Dukung Platform - Auto Download Center";
 const pageDescription = "Optional support for open source platform development. Your contribution helps us continue providing free, safe software downloads.";
+
+// Support Links - Easy to update
+const KOFI_URL = "https://ko-fi.com/autodownloadcenter"; // Replace with your Ko-fi username
+const PATREON_URL = "https://www.patreon.com/autodownloadcenter"; // Replace with your Patreon username
 ---
 
 <Layout 
@@ -150,7 +154,7 @@ const pageDescription = "Optional support for open source platform development. 
       </div>
     </div>
   </section>
-  <!-- Support Options Section - NEW -->
+  <!-- Support Options Section - FIXED: Active Links -->
   <section class="py-20 bg-white dark:bg-gray-900">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
@@ -165,10 +169,15 @@ const pageDescription = "Optional support for open source platform development. 
         </p>
       </div>
 
-      <!-- Support Options Grid -->
+      <!-- Support Options Grid - FIXED: All buttons now active -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        <!-- Ko-fi -->
-        <a href="#" class="group relative bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-800 dark:to-blue-900/20 rounded-3xl p-8 border-2 border-blue-200 dark:border-blue-800 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 hover:-translate-y-2 hover:scale-105">
+        <!-- Ko-fi - ACTIVE LINK -->
+        <a 
+          href={KOFI_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group relative bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-800 dark:to-blue-900/20 rounded-3xl p-8 border-2 border-blue-200 dark:border-blue-800 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 hover:-translate-y-2 hover:scale-105"
+        >
           <div class="flex flex-col items-center text-center">
             <div class="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
               <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -180,8 +189,13 @@ const pageDescription = "Optional support for open source platform development. 
           </div>
         </a>
 
-        <!-- Patreon -->
-        <a href="#" class="group relative bg-gradient-to-br from-orange-50 to-orange-100 dark:from-gray-800 dark:to-orange-900/20 rounded-3xl p-8 border-2 border-orange-200 dark:border-orange-800 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 hover:-translate-y-2 hover:scale-105">
+        <!-- Patreon - ACTIVE LINK -->
+        <a 
+          href={PATREON_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group relative bg-gradient-to-br from-orange-50 to-orange-100 dark:from-gray-800 dark:to-orange-900/20 rounded-3xl p-8 border-2 border-orange-200 dark:border-orange-800 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 hover:-translate-y-2 hover:scale-105"
+        >
           <div class="flex flex-col items-center text-center">
             <div class="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
               <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -193,8 +207,11 @@ const pageDescription = "Optional support for open source platform development. 
           </div>
         </a>
 
-        <!-- QRIS (Indonesia) -->
-        <button id="show-qris-btn" class="group relative bg-gradient-to-br from-purple-50 to-purple-100 dark:from-gray-800 dark:to-purple-900/20 rounded-3xl p-8 border-2 border-purple-200 dark:border-purple-800 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:-translate-y-2 hover:scale-105">
+        <!-- QRIS (Indonesia) - OPENS MODAL -->
+        <button 
+          id="show-qris-btn" 
+          class="group relative bg-gradient-to-br from-purple-50 to-purple-100 dark:from-gray-800 dark:to-purple-900/20 rounded-3xl p-8 border-2 border-purple-200 dark:border-purple-800 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:-translate-y-2 hover:scale-105"
+        >
           <div class="flex flex-col items-center text-center">
             <div class="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
               <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -207,28 +224,7 @@ const pageDescription = "Optional support for open source platform development. 
         </button>
       </div>
 
-      <!-- Nominal Suggestions - Soft UX -->
-      <div class="text-center mb-8">
-        <p class="text-sm text-gray-500 dark:text-gray-500 mb-4">
-          Referensi nominal (opsional) / Suggested amounts (optional)
-        </p>
-        <div class="flex flex-wrap justify-center gap-3">
-          <button class="px-6 py-3 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-2xl text-gray-700 dark:text-gray-300 font-medium hover:border-purple-500 dark:hover:border-purple-500 hover:text-purple-600 dark:hover:text-purple-400 hover:shadow-lg hover:scale-105 transition-all duration-300">
-            Rp 5.000
-          </button>
-          <button class="px-6 py-3 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-2xl text-gray-700 dark:text-gray-300 font-medium hover:border-purple-500 dark:hover:border-purple-500 hover:text-purple-600 dark:hover:text-purple-400 hover:shadow-lg hover:scale-105 transition-all duration-300">
-            Rp 10.000
-          </button>
-          <button class="px-6 py-3 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-2xl text-gray-700 dark:text-gray-300 font-medium hover:border-purple-500 dark:hover:border-purple-500 hover:text-purple-600 dark:hover:text-purple-400 hover:shadow-lg hover:scale-105 transition-all duration-300">
-            Rp 25.000
-          </button>
-          <button class="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 border-2 border-purple-500 rounded-2xl text-white font-medium hover:from-purple-600 hover:to-pink-600 hover:shadow-lg hover:scale-105 transition-all duration-300">
-            Seikhlasnya / Any Amount
-          </button>
-        </div>
-      </div>
-
-      <!-- Soft Message -->
+      <!-- Soft Message - NO NOMINAL HERE -->
       <div class="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/10 dark:to-pink-900/10 rounded-3xl p-8 border border-purple-200/50 dark:border-purple-800/50 backdrop-blur-sm">
         <div class="flex items-start">
           <svg class="w-6 h-6 text-purple-600 dark:text-purple-400 mr-4 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
@@ -250,7 +246,7 @@ const pageDescription = "Optional support for open source platform development. 
       </div>
     </div>
   </section>
-  <!-- QRIS Modal/Section - HIDDEN BY DEFAULT -->
+  <!-- QRIS Modal - WITH NOMINAL SUGGESTIONS INSIDE -->
   <div id="qris-modal" class="hidden fixed inset-0 z-50 overflow-y-auto">
     <!-- Backdrop -->
     <div class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity"></div>
@@ -276,6 +272,39 @@ const pageDescription = "Optional support for open source platform development. 
           <p class="text-gray-600 dark:text-gray-400 text-sm">
             Use your e-wallet or mobile banking app
           </p>
+        </div>
+
+        <!-- Nominal Suggestions - MOVED HERE -->
+        <div class="mb-6">
+          <p class="text-sm text-gray-600 dark:text-gray-400 text-center mb-4">
+            <span class="font-semibold">Pilih nominal sebagai referensi / Choose an amount as reference</span>
+          </p>
+          <div class="flex flex-wrap justify-center gap-3 mb-4">
+            <button class="px-5 py-2.5 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl text-gray-700 dark:text-gray-300 font-medium hover:border-purple-500 dark:hover:border-purple-500 hover:text-purple-600 dark:hover:text-purple-400 hover:shadow-lg hover:scale-105 transition-all duration-300 text-sm">
+              Rp 5.000
+            </button>
+            <button class="px-5 py-2.5 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl text-gray-700 dark:text-gray-300 font-medium hover:border-purple-500 dark:hover:border-purple-500 hover:text-purple-600 dark:hover:text-purple-400 hover:shadow-lg hover:scale-105 transition-all duration-300 text-sm">
+              Rp 10.000
+            </button>
+            <button class="px-5 py-2.5 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl text-gray-700 dark:text-gray-300 font-medium hover:border-purple-500 dark:hover:border-purple-500 hover:text-purple-600 dark:hover:text-purple-400 hover:shadow-lg hover:scale-105 transition-all duration-300 text-sm">
+              Rp 25.000
+            </button>
+            <button class="px-5 py-2.5 bg-gradient-to-r from-purple-500 to-pink-500 border-2 border-purple-500 rounded-xl text-white font-medium hover:from-purple-600 hover:to-pink-600 hover:shadow-lg hover:scale-105 transition-all duration-300 text-sm">
+              Seikhlasnya / Any Amount
+            </button>
+          </div>
+          
+          <!-- Microcopy - ADDED -->
+          <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-4 text-sm">
+            <p class="text-blue-800 dark:text-blue-300 leading-relaxed mb-2">
+              <span class="font-semibold">🇮🇩:</span> Pilih nominal sebagai referensi sebelum melakukan pembayaran. 
+              Nominal tidak otomatis terisi di aplikasi pembayaran, silakan masukkan secara manual sesuai pilihan Anda.
+            </p>
+            <p class="text-blue-800 dark:text-blue-300 leading-relaxed">
+              <span class="font-semibold">🇬🇧:</span> Choose an amount as a reference before making payment. 
+              The amount will not be automatically filled in your payment app, so please enter it manually.
+            </p>
+          </div>
         </div>
 
         <!-- QRIS Image -->
