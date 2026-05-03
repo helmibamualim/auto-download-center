@@ -3,384 +3,440 @@ import Layout from '../layouts/Layout.astro';
 
 // SEO Configuration
 const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://auto-download-center.vercel.app';
-const pageTitle = "Donasi & Dukungan Komunitas / Donate & Community Support - Auto Download Center";
-const pageDescription = "Dukung pengembangan platform open source kami. Support our open source platform development.";
+const pageTitle = "Support the Platform / Dukung Platform - Auto Download Center";
+const pageDescription = "Optional support for open source platform development. Your contribution helps us continue providing free, safe software downloads.";
 ---
+
 <Layout 
   title={pageTitle}
   description={pageDescription}
   canonical={`${siteUrl}/donate`}
 >
-  <!-- Hero Section -->
-  <section class="relative bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-gray-900 py-20 md:py-32 overflow-hidden">
-    <!-- Animated Background -->
-    <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
-    <div class="absolute top-0 left-1/4 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
-    <div class="absolute top-0 right-1/4 w-96 h-96 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
+  <!-- Hero Section - Soft & Elegant -->
+  <section class="relative bg-gradient-to-br from-purple-50/50 via-white to-blue-50/50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900 py-20 md:py-28 overflow-hidden">
+    <!-- Subtle Background -->
+    <div class="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-purple-200 dark:bg-purple-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl opacity-20 dark:opacity-10 animate-blob"></div>
+    <div class="absolute top-0 right-1/4 w-96 h-96 bg-blue-200 dark:bg-blue-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl opacity-20 dark:opacity-10 animate-blob animation-delay-2000"></div>
     
-    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <!-- Badge -->
-      <div class="inline-flex items-center px-4 py-2 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-medium mb-6 backdrop-blur-sm">
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <!-- Subtle Badge -->
+      <div class="inline-flex items-center px-5 py-2 rounded-full bg-white/60 dark:bg-gray-800/60 backdrop-blur-md border border-purple-200/50 dark:border-purple-800/50 text-purple-700 dark:text-purple-300 text-sm font-medium mb-8 shadow-sm">
         <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
           <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path>
         </svg>
-        Dukungan Komunitas / Community Support
+        Optional Support
       </div>
 
-      <!-- Main Heading -->
+      <!-- Main Heading - Soft Approach -->
       <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-100 mb-6 leading-tight">
-        <span class="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
-          Dukung Perkembangan
-        </span>
-        <br />
-        Open Source
+        💜 Dukung Pengembangan Platform
       </h1>
       
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-8 leading-tight">
-        <span class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-          Support Open Source
-        </span>
-        <br />
-        Development
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-700 dark:text-gray-300 mb-10 leading-tight">
+        💜 Support the Platform
       </h2>
       
-      <!-- Subtitle Bilingual -->
-      <div class="max-w-3xl mx-auto space-y-4 mb-10">
-        <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-          <span class="font-semibold text-gray-900 dark:text-gray-100">🇮🇩 Indonesia:</span><br />
-          Website ini dibangun untuk membantu siapa saja menemukan software gratis, aman, dan open source tanpa batas. 
-          Dukungan Anda membantu kami terus berkembang, meningkatkan kualitas layanan, dan menjaga platform tetap bebas dari iklan yang mengganggu.
+      <!-- Subtitle - Emphasize Optional -->
+      <div class="max-w-2xl mx-auto space-y-6 mb-8">
+        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
+          Platform ini akan <span class="font-semibold text-gray-900 dark:text-gray-100">selalu gratis</span> untuk semua orang. 
+          Jika Anda merasa terbantu, dukungan sukarela Anda akan sangat berarti untuk pengembangan berkelanjutan.
         </p>
         
-        <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-          <span class="font-semibold text-gray-900 dark:text-gray-100">🇬🇧 English:</span><br />
-          This website is built to help everyone discover free, safe, and open-source software without limitations. 
-          Your support helps us continue to grow, improve the platform, and stay independent from intrusive ads.
+        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
+          This platform will <span class="font-semibold text-gray-900 dark:text-gray-100">always remain free</span> for everyone. 
+          If you find it helpful, your voluntary support would mean a lot for continued development.
         </p>
+      </div>
+
+      <!-- No Obligation Message -->
+      <div class="inline-flex items-center px-6 py-3 rounded-2xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-300 text-sm font-medium shadow-sm">
+        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+        </svg>
+        <span class="mr-2">Tidak ada kewajiban.</span>
+        <span>No obligation.</span>
       </div>
     </div>
   </section>
-  <!-- Why Support Us Section -->
-  <section class="py-20 bg-white dark:bg-gray-900">
+  <!-- Why Support Us Section - Glassmorphism Style -->
+  <section class="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-          Alasan Mendukung Kami
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+          Mengapa Mendukung Kami?
         </h2>
-        <h3 class="text-3xl font-bold text-gray-700 dark:text-gray-300 mb-6">
-          Why Support Us
+        <h3 class="text-2xl md:text-3xl font-bold text-gray-600 dark:text-gray-400 mb-4">
+          Why Support Us?
         </h3>
-        <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-          Setiap kontribusi Anda sangat berarti / Every contribution matters
+        <p class="text-lg text-gray-500 dark:text-gray-500 max-w-2xl mx-auto">
+          Dukungan Anda membantu kami terus berkembang / Your support helps us grow
         </p>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <!-- Card 1 -->
-        <div class="group bg-gradient-to-br from-purple-50 to-purple-100 dark:from-gray-800 dark:to-purple-900/20 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-          <div class="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Card 1 - Glassmorphism -->
+        <div class="group relative bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-3xl p-6 border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl hover:shadow-purple-500/10 dark:hover:shadow-purple-500/20 transition-all duration-500 hover:-translate-y-1">
+          <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-purple-500/30">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+          <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">
             Pengembangan Berkelanjutan
           </h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+          <p class="text-sm text-gray-500 dark:text-gray-500 mb-3">
             Continuous Development
           </p>
-          <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
-            Fitur baru, perbaikan bug, dan peningkatan performa terus dilakukan.
+          <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            Fitur baru, perbaikan, dan peningkatan performa.
           </p>
         </div>
 
         <!-- Card 2 -->
-        <div class="group bg-gradient-to-br from-pink-50 to-pink-100 dark:from-gray-800 dark:to-pink-900/20 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-          <div class="w-16 h-16 bg-pink-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="group relative bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-3xl p-6 border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl hover:shadow-pink-500/10 dark:hover:shadow-pink-500/20 transition-all duration-500 hover:-translate-y-1">
+          <div class="w-14 h-14 bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-pink-500/30">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+          <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">
             Bebas Iklan Berbahaya
           </h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+          <p class="text-sm text-gray-500 dark:text-gray-500 mb-3">
             Ad-Free Experience
           </p>
-          <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
-            Platform tetap bersih tanpa iklan yang mengganggu atau berbahaya.
+          <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            Platform tetap bersih tanpa iklan mengganggu.
           </p>
         </div>
 
         <!-- Card 3 -->
-        <div class="group bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-800 dark:to-blue-900/20 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-          <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="group relative bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-3xl p-6 border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl hover:shadow-blue-500/10 dark:hover:shadow-blue-500/20 transition-all duration-500 hover:-translate-y-1">
+          <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-500/30">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+          <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">
             Untuk Komunitas
           </h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-            Built for the Community
+          <p class="text-sm text-gray-500 dark:text-gray-500 mb-3">
+            Built for Community
           </p>
-          <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
-            Dibuat oleh komunitas, untuk komunitas open source.
+          <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            Dibuat oleh komunitas, untuk komunitas.
           </p>
         </div>
 
         <!-- Card 4 -->
-        <div class="group bg-gradient-to-br from-green-50 to-green-100 dark:from-gray-800 dark:to-green-900/20 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-          <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="group relative bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-3xl p-6 border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl hover:shadow-green-500/10 dark:hover:shadow-green-500/20 transition-all duration-500 hover:-translate-y-1">
+          <div class="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-green-500/30">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+          <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">
             Biaya Infrastruktur
           </h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+          <p class="text-sm text-gray-500 dark:text-gray-500 mb-3">
             Infrastructure Costs
           </p>
-          <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
-            Server, database, dan bandwidth memerlukan biaya operasional.
+          <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            Server, database, dan bandwidth.
           </p>
         </div>
       </div>
     </div>
   </section>
-  <!-- QRIS Donation Section - MAIN FOCUS -->
-  <section class="py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 dark:from-gray-800 dark:via-purple-900/10 dark:to-gray-800">
+  <!-- Support Options Section - NEW -->
+  <section class="py-20 bg-white dark:bg-gray-900">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <div class="inline-flex items-center px-6 py-3 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-medium mb-6">
-          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"></path>
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"></path>
-          </svg>
-          Donasi / Donate
-        </div>
-        
-        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
-          Scan QRIS untuk Berdonasi
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+          Cara Mendukung
         </h2>
-        <h3 class="text-3xl md:text-4xl font-bold text-gray-700 dark:text-gray-300 mb-8">
-          Scan QRIS to Donate
+        <h3 class="text-2xl md:text-3xl font-bold text-gray-600 dark:text-gray-400 mb-4">
+          Ways to Support
         </h3>
+        <p class="text-lg text-gray-500 dark:text-gray-500 max-w-2xl mx-auto">
+          Pilih cara yang paling nyaman untuk Anda / Choose what works best for you
+        </p>
       </div>
 
-      <!-- QRIS Card -->
-      <div class="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl p-8 md:p-12 border-2 border-purple-200 dark:border-purple-800">
+      <!-- Support Options Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <!-- Ko-fi -->
+        <a href="#" class="group relative bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-800 dark:to-blue-900/20 rounded-3xl p-8 border-2 border-blue-200 dark:border-blue-800 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 hover:-translate-y-2 hover:scale-105">
+          <div class="flex flex-col items-center text-center">
+            <div class="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.216 6.415l-.132-.666c-.119-.598-.388-1.163-1.001-1.379-.197-.069-.42-.098-.57-.241-.152-.143-.196-.366-.231-.572-.065-.378-.125-.756-.192-1.133-.057-.325-.102-.69-.25-.987-.195-.4-.597-.634-.996-.788a5.723 5.723 0 00-.626-.194c-1-.263-2.05-.36-3.077-.416a25.834 25.834 0 00-3.7.062c-.915.083-1.88.184-2.75.5-.318.116-.646.256-.888.501-.297.302-.393.77-.177 1.146.154.267.415.456.692.58.36.162.737.284 1.123.366 1.075.238 2.189.331 3.287.37 1.218.05 2.437.01 3.65-.118.299-.033.598-.073.896-.119.352-.054.578-.513.474-.834-.124-.383-.457-.531-.834-.473-.466.074-.96.108-1.382.146-1.177.08-2.358.082-3.536.006a22.228 22.228 0 01-1.157-.107c-.086-.01-.18-.025-.258-.036-.243-.036-.484-.08-.724-.13-.111-.027-.111-.185 0-.212h.005c.277-.06.557-.108.838-.147h.002c.131-.009.263-.032.394-.048a25.076 25.076 0 013.426-.12c.674.019 1.347.067 2.017.144l.228.031c.267.04.533.088.798.145.392.085.895.113 1.07.542.055.137.08.288.111.431l.319 1.484a.237.237 0 01-.199.284h-.003c-.037.006-.075.01-.112.015a36.704 36.704 0 01-4.743.295 37.059 37.059 0 01-4.699-.304c-.14-.017-.293-.042-.417-.06-.326-.048-.649-.108-.973-.161-.393-.065-.768-.032-1.123.161-.29.16-.527.404-.675.701-.154.316-.199.66-.267 1-.069.34-.176.707-.135 1.056.087.753.613 1.365 1.37 1.502a39.69 39.69 0 0011.343.376.483.483 0 01.535.53l-.071.697-1.018 9.907c-.041.41-.047.832-.125 1.237-.122.637-.553 1.028-1.182 1.171-.577.131-1.165.2-1.756.205-.656.004-1.31-.025-1.966-.022-.699.004-1.556-.06-2.095-.58-.475-.458-.54-1.174-.605-1.793l-.731-7.013-.322-3.094c-.037-.351-.286-.695-.678-.678-.336.015-.718.3-.678.679l.228 2.185.949 9.112c.147 1.344 1.174 2.068 2.446 2.272.742.12 1.503.144 2.257.156.966.016 1.942.053 2.892-.122 1.408-.258 2.465-1.198 2.616-2.657.34-3.332.683-6.663 1.024-9.995l.215-2.087a.484.484 0 01.39-.426c.402-.078.787-.212 1.074-.518.455-.488.546-1.124.385-1.766zm-1.478.772c-.145.137-.363.201-.578.233-2.416.359-4.866.54-7.308.46-1.748-.06-3.477-.254-5.207-.498-.17-.024-.353-.055-.47-.18-.22-.236-.111-.71-.054-.995.052-.26.152-.609.463-.646.484-.057 1.046.148 1.526.22.577.088 1.156.159 1.737.212 2.48.226 5.002.19 7.472-.14.45-.06.899-.13 1.345-.21.399-.072.84-.206 1.08.206.166.281.188.657.162.974a.544.544 0 01-.169.364zm-6.159 3.9c-.862.37-1.84.788-3.109.788a5.884 5.884 0 01-1.569-.217l.877 9.004c.065.78.717 1.38 1.5 1.38 0 0 1.243.065 1.658.065.447 0 1.786-.065 1.786-.065.783 0 1.434-.6 1.499-1.38l.94-9.95a3.996 3.996 0 00-1.322-.238c-.826 0-1.491.284-2.26.613z"></path>
+              </svg>
+            </div>
+            <h4 class="font-bold text-gray-900 dark:text-gray-100 text-lg mb-2">Ko-fi</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Buy me a coffee</p>
+          </div>
+        </a>
+
+        <!-- Patreon -->
+        <a href="#" class="group relative bg-gradient-to-br from-orange-50 to-orange-100 dark:from-gray-800 dark:to-orange-900/20 rounded-3xl p-8 border-2 border-orange-200 dark:border-orange-800 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 hover:-translate-y-2 hover:scale-105">
+          <div class="flex flex-col items-center text-center">
+            <div class="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M15.386.524c-4.764 0-8.64 3.876-8.64 8.64 0 4.75 3.876 8.613 8.64 8.613 4.75 0 8.614-3.864 8.614-8.613C24 4.4 20.136.524 15.386.524M.003 23.537h4.22V.524H.003"></path>
+              </svg>
+            </div>
+            <h4 class="font-bold text-gray-900 dark:text-gray-100 text-lg mb-2">Patreon</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Monthly support</p>
+          </div>
+        </a>
+
+        <!-- QRIS (Indonesia) -->
+        <button id="show-qris-btn" class="group relative bg-gradient-to-br from-purple-50 to-purple-100 dark:from-gray-800 dark:to-purple-900/20 rounded-3xl p-8 border-2 border-purple-200 dark:border-purple-800 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:-translate-y-2 hover:scale-105">
+          <div class="flex flex-col items-center text-center">
+            <div class="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path>
+              </svg>
+            </div>
+            <h4 class="font-bold text-gray-900 dark:text-gray-100 text-lg mb-2">QRIS</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Indonesia payment</p>
+          </div>
+        </button>
+      </div>
+
+      <!-- Nominal Suggestions - Soft UX -->
+      <div class="text-center mb-8">
+        <p class="text-sm text-gray-500 dark:text-gray-500 mb-4">
+          Referensi nominal (opsional) / Suggested amounts (optional)
+        </p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <button class="px-6 py-3 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-2xl text-gray-700 dark:text-gray-300 font-medium hover:border-purple-500 dark:hover:border-purple-500 hover:text-purple-600 dark:hover:text-purple-400 hover:shadow-lg hover:scale-105 transition-all duration-300">
+            Rp 5.000
+          </button>
+          <button class="px-6 py-3 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-2xl text-gray-700 dark:text-gray-300 font-medium hover:border-purple-500 dark:hover:border-purple-500 hover:text-purple-600 dark:hover:text-purple-400 hover:shadow-lg hover:scale-105 transition-all duration-300">
+            Rp 10.000
+          </button>
+          <button class="px-6 py-3 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-2xl text-gray-700 dark:text-gray-300 font-medium hover:border-purple-500 dark:hover:border-purple-500 hover:text-purple-600 dark:hover:text-purple-400 hover:shadow-lg hover:scale-105 transition-all duration-300">
+            Rp 25.000
+          </button>
+          <button class="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 border-2 border-purple-500 rounded-2xl text-white font-medium hover:from-purple-600 hover:to-pink-600 hover:shadow-lg hover:scale-105 transition-all duration-300">
+            Seikhlasnya / Any Amount
+          </button>
+        </div>
+      </div>
+
+      <!-- Soft Message -->
+      <div class="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/10 dark:to-pink-900/10 rounded-3xl p-8 border border-purple-200/50 dark:border-purple-800/50 backdrop-blur-sm">
+        <div class="flex items-start">
+          <svg class="w-6 h-6 text-purple-600 dark:text-purple-400 mr-4 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+          </svg>
+          <div class="flex-1">
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              <span class="font-semibold">🇮🇩 Indonesia:</span><br />
+              Dukungan Anda bersifat sepenuhnya opsional. Jika Anda merasa platform ini bermanfaat, 
+              Anda dapat mendukung pengembangannya secara sukarela. Platform ini akan tetap gratis digunakan.
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              <span class="font-semibold">🇬🇧 English:</span><br />
+              Your support is completely optional. If you find this platform useful, 
+              you may choose to support its development. The platform will always remain free to use.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- QRIS Modal/Section - HIDDEN BY DEFAULT -->
+  <div id="qris-modal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+    <!-- Backdrop -->
+    <div class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity"></div>
+    
+    <!-- Modal Content -->
+    <div class="flex min-h-full items-center justify-center p-4">
+      <div class="relative bg-white dark:bg-gray-900 rounded-3xl shadow-2xl max-w-2xl w-full p-8 transform transition-all">
+        <!-- Close Button -->
+        <button id="close-qris-btn" class="absolute top-4 right-4 p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+          <svg class="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+
+        <!-- Modal Header -->
+        <div class="text-center mb-6">
+          <h3 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+            Scan QRIS
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400">
+            Gunakan aplikasi e-wallet atau mobile banking Anda
+          </p>
+          <p class="text-gray-600 dark:text-gray-400 text-sm">
+            Use your e-wallet or mobile banking app
+          </p>
+        </div>
+
         <!-- QRIS Image -->
-        <div class="flex justify-center mb-8">
+        <div class="flex justify-center mb-6">
           <div class="relative group">
-            <div class="absolute -inset-4 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
+            <div class="absolute -inset-4 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-3xl blur-2xl opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
             <div class="relative bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl">
               <img 
                 src="/images/qris-donation.jpg" 
                 alt="QRIS Donation Code" 
-                class="w-full max-w-sm mx-auto rounded-xl shadow-lg"
+                class="w-full max-w-xs mx-auto rounded-xl"
                 loading="lazy"
               />
             </div>
           </div>
         </div>
 
-        <!-- Important Notice - Bilingual -->
-        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-200 dark:border-yellow-800 rounded-2xl p-6 mb-8">
+        <!-- Important Notice -->
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-200 dark:border-yellow-800 rounded-2xl p-5 mb-6">
           <div class="flex items-start">
-            <svg class="w-6 h-6 text-yellow-600 dark:text-yellow-400 mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+            <svg class="w-5 h-5 text-yellow-600 dark:text-yellow-400 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
             </svg>
             <div class="flex-1">
-              <h4 class="font-bold text-yellow-900 dark:text-yellow-200 mb-3 text-lg">
-                ⚠️ Informasi Penting / Important Information
-              </h4>
-              
-              <div class="space-y-4 text-yellow-800 dark:text-yellow-300">
-                <p class="leading-relaxed">
-                  <span class="font-semibold">🇮🇩 Indonesia:</span><br />
-                  Saat melakukan pembayaran, nama yang muncul adalah <strong>"Alcafe"</strong>. 
-                  QRIS ini merupakan akun resmi yang digunakan untuk menerima dukungan komunitas untuk website ini.
-                </p>
-                
-                <p class="leading-relaxed">
-                  <span class="font-semibold">🇬🇧 English:</span><br />
-                  When making a payment, the name displayed will be <strong>"Alcafe"</strong>. 
-                  This QRIS account is officially used to receive community support for this website.
-                </p>
-              </div>
+              <p class="text-sm text-yellow-800 dark:text-yellow-300 leading-relaxed mb-2">
+                <span class="font-semibold">🇮🇩 Informasi:</span><br />
+                Nama yang muncul saat pembayaran adalah <strong>"Alcafe"</strong>. 
+                Ini adalah akun resmi untuk menerima dukungan platform.
+              </p>
+              <p class="text-sm text-yellow-800 dark:text-yellow-300 leading-relaxed">
+                <span class="font-semibold">🇬🇧 Information:</span><br />
+                The name displayed during payment is <strong>"Alcafe"</strong>. 
+                This is the official account for receiving platform support.
+              </p>
             </div>
           </div>
         </div>
 
-        <!-- Donation Usage - Bilingual -->
-        <div class="bg-purple-50 dark:bg-purple-900/20 border-2 border-purple-200 dark:border-purple-800 rounded-2xl p-6">
-          <h4 class="font-bold text-purple-900 dark:text-purple-200 mb-4 text-xl flex items-center">
-            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
+        <!-- Fund Usage -->
+        <div class="bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-2xl p-5">
+          <h4 class="font-semibold text-purple-900 dark:text-purple-200 mb-3 text-sm flex items-center">
+            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
               <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path>
             </svg>
-            💜 Donasi Anda akan digunakan untuk:
+            Dukungan Anda akan digunakan untuk / Your support will be used for:
           </h4>
-          <ul class="space-y-2 text-purple-800 dark:text-purple-300 mb-6">
+          <ul class="space-y-1.5 text-purple-800 dark:text-purple-300 text-sm">
             <li class="flex items-start">
-              <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <svg class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
               </svg>
-              Pengembangan fitur baru
+              Pengembangan fitur baru / New features
             </li>
             <li class="flex items-start">
-              <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <svg class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
               </svg>
-              Pemeliharaan server & database
+              Server & database / Infrastructure
             </li>
             <li class="flex items-start">
-              <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <svg class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
               </svg>
-              Peningkatan performa dan keamanan
-            </li>
-            <li class="flex items-start">
-              <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-              </svg>
-              Menjaga platform tetap bebas dari iklan berbahaya
-            </li>
-          </ul>
-
-          <h4 class="font-bold text-purple-900 dark:text-purple-200 mb-4 text-xl flex items-center">
-            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path>
-            </svg>
-            💜 Your donation will be used for:
-          </h4>
-          <ul class="space-y-2 text-purple-800 dark:text-purple-300">
-            <li class="flex items-start">
-              <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-              </svg>
-              Developing new features
-            </li>
-            <li class="flex items-start">
-              <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-              </svg>
-              Server & database maintenance
-            </li>
-            <li class="flex items-start">
-              <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-              </svg>
-              Performance and security improvements
-            </li>
-            <li class="flex items-start">
-              <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-              </svg>
-              Keeping the platform free from harmful ads
+              Keamanan & performa / Security & performance
             </li>
           </ul>
         </div>
       </div>
     </div>
-  </section>
-  <!-- Transparency Section -->
-  <section class="py-20 bg-white dark:bg-gray-900">
+  </div>
+  <!-- Transparency Section - Refined -->
+  <section class="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-3">
           Transparansi
         </h2>
-        <h3 class="text-3xl font-bold text-gray-700 dark:text-gray-300 mb-6">
+        <h3 class="text-2xl md:text-3xl font-bold text-gray-600 dark:text-gray-400 mb-4">
           Transparency
         </h3>
+        <p class="text-lg text-gray-500 dark:text-gray-500 max-w-2xl mx-auto">
+          Penggunaan dana yang bertanggung jawab / Responsible fund usage
+        </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
         <!-- Development -->
-        <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-800 dark:to-blue-900/20 rounded-2xl p-6 border-2 border-blue-200 dark:border-blue-800">
+        <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-2xl p-6 border border-gray-200/50 dark:border-gray-700/50 hover:shadow-lg transition-all duration-300">
           <div class="flex items-center mb-4">
-            <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mr-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mr-4 shadow-lg shadow-blue-500/30">
               <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
               </svg>
             </div>
-            <h4 class="font-bold text-blue-900 dark:text-blue-200 text-lg">
-              Pengembangan / Development
+            <h4 class="font-bold text-gray-900 dark:text-gray-100">
+              Development
             </h4>
           </div>
-          <ul class="space-y-2 text-blue-800 dark:text-blue-300 text-sm">
+          <ul class="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
             <li>• Fitur baru / New features</li>
-            <li>• Perbaikan bug / Bug fixes</li>
-            <li>• Optimasi kode / Code optimization</li>
-            <li>• Testing & QA</li>
+            <li>• Bug fixes</li>
+            <li>• Optimasi / Optimization</li>
           </ul>
         </div>
 
         <!-- Infrastructure -->
-        <div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-gray-800 dark:to-green-900/20 rounded-2xl p-6 border-2 border-green-200 dark:border-green-800">
+        <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-2xl p-6 border border-gray-200/50 dark:border-gray-700/50 hover:shadow-lg transition-all duration-300">
           <div class="flex items-center mb-4">
-            <div class="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center mr-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mr-4 shadow-lg shadow-green-500/30">
               <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
               </svg>
             </div>
-            <h4 class="font-bold text-green-900 dark:text-green-200 text-lg">
-              Infrastruktur / Infrastructure
+            <h4 class="font-bold text-gray-900 dark:text-gray-100">
+              Infrastructure
             </h4>
           </div>
-          <ul class="space-y-2 text-green-800 dark:text-green-300 text-sm">
+          <ul class="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
             <li>• Hosting server</li>
             <li>• Database storage</li>
             <li>• Bandwidth & CDN</li>
-            <li>• Backup & security</li>
           </ul>
         </div>
 
         <!-- Operations -->
-        <div class="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-gray-800 dark:to-purple-900/20 rounded-2xl p-6 border-2 border-purple-200 dark:border-purple-800">
+        <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-2xl p-6 border border-gray-200/50 dark:border-gray-700/50 hover:shadow-lg transition-all duration-300">
           <div class="flex items-center mb-4">
-            <div class="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center mr-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mr-4 shadow-lg shadow-purple-500/30">
               <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
               </svg>
             </div>
-            <h4 class="font-bold text-purple-900 dark:text-purple-200 text-lg">
-              Operasional / Operations
+            <h4 class="font-bold text-gray-900 dark:text-gray-100">
+              Operations
             </h4>
           </div>
-          <ul class="space-y-2 text-purple-800 dark:text-purple-300 text-sm">
+          <ul class="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
             <li>• Monitoring 24/7</li>
-            <li>• Maintenance rutin / Regular maintenance</li>
-            <li>• Support & updates</li>
+            <li>• Maintenance</li>
             <li>• Security patches</li>
           </ul>
         </div>
       </div>
 
-      <!-- Transparency Statement -->
-      <div class="mt-12 bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-200 dark:border-gray-700">
+      <!-- Transparency Statement - Soft -->
+      <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-2xl p-6 border border-gray-200/50 dark:border-gray-700/50">
         <div class="flex items-start">
-          <svg class="w-8 h-8 text-blue-600 dark:text-blue-400 mr-4 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-6 h-6 text-blue-600 dark:text-blue-400 mr-4 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
           <div class="flex-1">
-            <h4 class="font-bold text-gray-900 dark:text-gray-100 mb-3 text-lg">
-              Komitmen Transparansi / Transparency Commitment
+            <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-3">
+              Komitmen Kami / Our Commitment
             </h4>
-            <div class="space-y-3 text-gray-700 dark:text-gray-300">
+            <div class="space-y-3 text-gray-600 dark:text-gray-400 text-sm">
               <p>
-                <span class="font-semibold">🇮🇩 Indonesia:</span><br />
-                Kami berkomitmen untuk menggunakan setiap donasi dengan bijak dan bertanggung jawab. 
-                Dana yang terkumpul akan digunakan sepenuhnya untuk pengembangan, pemeliharaan, dan peningkatan platform ini. 
+                <span class="font-medium">🇮🇩:</span> Kami berkomitmen menggunakan setiap dukungan dengan bijak untuk pengembangan platform. 
                 Tidak ada dana yang digunakan untuk kepentingan pribadi.
               </p>
               <p>
-                <span class="font-semibold">🇬🇧 English:</span><br />
-                We are committed to using every donation wisely and responsibly. 
-                All funds collected will be used entirely for the development, maintenance, and improvement of this platform. 
+                <span class="font-medium">🇬🇧:</span> We are committed to using every contribution wisely for platform development. 
                 No funds will be used for personal interests.
               </p>
             </div>
@@ -389,68 +445,57 @@ const pageDescription = "Dukung pengembangan platform open source kami. Support 
       </div>
     </div>
   </section>
-  <!-- Thank You / Closing Section -->
-  <section class="relative py-24 bg-gradient-to-br from-purple-600 via-pink-600 to-blue-600 overflow-hidden">
-    <!-- Animated Background -->
-    <div class="absolute inset-0 opacity-20">
-      <div class="absolute top-0 left-1/4 w-96 h-96 bg-white rounded-full mix-blend-overlay filter blur-3xl animate-blob"></div>
-      <div class="absolute top-0 right-1/4 w-96 h-96 bg-white rounded-full mix-blend-overlay filter blur-3xl animate-blob animation-delay-2000"></div>
-      <div class="absolute bottom-0 left-1/3 w-96 h-96 bg-white rounded-full mix-blend-overlay filter blur-3xl animate-blob animation-delay-4000"></div>
+
+  <!-- Thank You Section - Elegant & Soft -->
+  <section class="relative py-20 bg-gradient-to-br from-purple-100/50 via-pink-100/50 to-blue-100/50 dark:from-gray-900 dark:via-purple-900/10 dark:to-gray-900 overflow-hidden">
+    <!-- Subtle Background -->
+    <div class="absolute inset-0 opacity-30 dark:opacity-10">
+      <div class="absolute top-0 left-1/4 w-96 h-96 bg-purple-300 dark:bg-purple-600 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl animate-blob"></div>
+      <div class="absolute top-0 right-1/4 w-96 h-96 bg-pink-300 dark:bg-pink-600 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl animate-blob animation-delay-2000"></div>
     </div>
 
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <!-- Icon -->
-      <div class="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full mb-8">
-        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+      <div class="inline-flex items-center justify-center w-16 h-16 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full mb-6 shadow-lg">
+        <svg class="w-8 h-8 text-purple-600 dark:text-purple-400" fill="currentColor" viewBox="0 0 20 20">
           <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path>
         </svg>
       </div>
 
       <!-- Heading -->
-      <h2 class="text-4xl md:text-5xl font-bold text-white mb-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-3">
         Terima Kasih 🙏
       </h2>
-      <h3 class="text-3xl md:text-4xl font-bold text-white/90 mb-12">
+      <h3 class="text-2xl md:text-3xl font-bold text-gray-700 dark:text-gray-300 mb-8">
         Thank You 🙏
       </h3>
 
-      <!-- Message - Indonesian -->
-      <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 mb-6 border border-white/20">
-        <p class="text-xl md:text-2xl text-white leading-relaxed mb-4">
-          <span class="font-bold">🇮🇩 Indonesia:</span>
-        </p>
-        <p class="text-lg md:text-xl text-white/95 leading-relaxed">
-          Terima kasih atas setiap dukungan yang Anda berikan. Sekecil apapun kontribusi Anda sangat berarti bagi keberlanjutan platform ini.
-        </p>
-        <p class="text-lg md:text-xl text-white/95 leading-relaxed mt-4">
-          Semoga kebaikan Anda dibalas dengan keberkahan, kemudahan rezeki, dan kesuksesan dalam setiap langkah.
-        </p>
-        <p class="text-lg md:text-xl text-white/95 leading-relaxed mt-4 font-semibold">
-          Terima kasih telah menjadi bagian dari perjalanan ini 💫
-        </p>
-      </div>
-
-      <!-- Message - English -->
-      <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20">
-        <p class="text-xl md:text-2xl text-white leading-relaxed mb-4">
-          <span class="font-bold">🇬🇧 English:</span>
-        </p>
-        <p class="text-lg md:text-xl text-white/95 leading-relaxed">
-          Thank you for every support you give. No matter how small, your contribution means a lot to the sustainability of this platform.
-        </p>
-        <p class="text-lg md:text-xl text-white/95 leading-relaxed mt-4">
-          May your kindness be returned with blessings, success, and ease in everything you do.
-        </p>
-        <p class="text-lg md:text-xl text-white/95 leading-relaxed mt-4 font-semibold">
-          Thank you for being part of this journey 💫
-        </p>
+      <!-- Message - Soft & Grateful -->
+      <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-3xl p-8 border border-gray-200/50 dark:border-gray-700/50 shadow-xl">
+        <div class="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p class="text-lg">
+            <span class="font-semibold">🇮🇩:</span> Terima kasih telah menggunakan platform ini. 
+            Jika Anda memilih untuk mendukung, setiap kontribusi sangat berarti bagi keberlanjutan platform.
+          </p>
+          <p class="text-lg">
+            Semoga kebaikan Anda dibalas dengan keberkahan dan kesuksesan 💫
+          </p>
+          <div class="border-t border-gray-200 dark:border-gray-700 my-6"></div>
+          <p class="text-lg">
+            <span class="font-semibold">🇬🇧:</span> Thank you for using this platform. 
+            If you choose to support, every contribution means a lot for the platform's sustainability.
+          </p>
+          <p class="text-lg">
+            May your kindness be returned with blessings and success 💫
+          </p>
+        </div>
       </div>
 
       <!-- CTA Button -->
-      <div class="mt-12">
+      <div class="mt-10">
         <a 
           href="/" 
-          class="inline-flex items-center px-8 py-4 bg-white hover:bg-gray-100 text-purple-600 font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+          class="inline-flex items-center px-8 py-4 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100 font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-200 dark:border-gray-700"
         >
           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
@@ -460,5 +505,39 @@ const pageDescription = "Dukung pengembangan platform open source kami. Support 
       </div>
     </div>
   </section>
+
+  <!-- JavaScript for Modal -->
+  <script>
+    // Show QRIS Modal
+    const showQrisBtn = document.getElementById('show-qris-btn');
+    const qrisModal = document.getElementById('qris-modal');
+    const closeQrisBtn = document.getElementById('close-qris-btn');
+
+    showQrisBtn?.addEventListener('click', () => {
+      qrisModal?.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeQrisBtn?.addEventListener('click', () => {
+      qrisModal?.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    });
+
+    // Close modal when clicking backdrop
+    qrisModal?.addEventListener('click', (e) => {
+      if (e.target === qrisModal) {
+        qrisModal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !qrisModal?.classList.contains('hidden')) {
+        qrisModal?.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
+    });
+  </script>
 
 </Layout>
